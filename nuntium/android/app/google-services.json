@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "134309525940",
+    "project_id": "nuntium-a5bcf",
+    "storage_bucket": "nuntium-a5bcf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134309525940:android:3ff5694886b0c3c1335ae1",
+        "android_client_info": {
+          "package_name": "com.example.nuntium"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "134309525940-avitc1pjd526hrd1p29996ik609t58ip.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjRaFLKg5Uw5G0AWok7plk2BUCb_FlL_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "134309525940-avitc1pjd526hrd1p29996ik609t58ip.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
