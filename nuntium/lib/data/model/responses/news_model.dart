@@ -1,20 +1,20 @@
 class NewsModel {
-  String? description;
   String? image;
+  String? description;
   String? title;
 
-  NewsModel({this.description, this.image, this.title});
+  NewsModel({this.image, this.description, this.title});
 
   NewsModel.fromJson(Map<String, dynamic> json) {
-    description = json['description'];
     image = json['image'];
+    description = json['description'];
     title = json['title'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['description'] = description;
     data['image'] = image;
+    data['description'] = description;
     data['title'] = title;
     return data;
   }

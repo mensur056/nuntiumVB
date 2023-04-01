@@ -37,7 +37,7 @@ dependencies:
   flutter_bloc: ^8.1.2
   bloc: ^8.1.1
   provider: ^6.0.5
-    
+  syncfusion_flutter_datagrid: 20.1.58  
 #firebase
   cloud_firestore: ^4.5.0
   firebase_core: ^2.9.0
@@ -46,7 +46,7 @@ dependencies:
   json_serializable: ^6.6.1
   json_annotation: ^4.8.0
   multiple_result: ^4.0.0
-
+  equatable: ^2.0.5 
   cupertino_icons: ^1.0.2
   kartal: ^2.8.0
   grock: ^0.2.5

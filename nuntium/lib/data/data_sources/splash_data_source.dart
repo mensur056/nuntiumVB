@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 
 enum FirebaseColllections {
   version;
@@ -13,22 +12,29 @@ enum PlatformEnum {
   android,
   ios;
 
-  static String get versionName{
-    if(Platform.isIOS){
+  static String get versionName {
+    if (Platform.isIOS) {
       return PlatformEnum.ios.name;
     }
-    if(Platform.isAndroid){
+    if (Platform.isAndroid) {
       return PlatformEnum.android.name;
-
     }
-return '';
+    throw Exception('Error');
   }
 }
 
-class SplashDataSource {
-  String? getVersionNumberFromDataBase() {
-    if(kIsWeb) return null;
-    FirebaseColllections.version.reference.doc()
-  
-    return null;}
-}
+// class SplashDataSource {
+//   String? getVersionNumberFromDataBase() {
+//     if (kIsWeb) return null;
+//     final response = FirebaseColllections.version.reference
+//         .withConverter<VersionModel>(
+//           fromFirestore: (snapshot, options) => VersionModel().fromFirebase(snapshot.data()),
+//           toFirestore: (value, options) {
+//             return value.toJson();
+//           },
+//         )
+//         .doc(PlatformEnum.versionName);
+
+//     return null;
+//   }
+// }
