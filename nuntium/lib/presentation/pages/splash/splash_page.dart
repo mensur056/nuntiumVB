@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../constants/colors.dart';
 import '../../../constants/icon_path.dart';
 
 class SplashPage extends StatelessWidget {
@@ -8,10 +9,16 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.primaryColors,
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(IconPath.logoPath.toPng),
+            const SizedBox(
+              height: 20,
+            ),
+            const Text("Nuntium")
           ],
         ),
       ),

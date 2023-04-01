@@ -30,6 +30,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+#core
+  get_it: ^7.2.0
 #statemanagement
   flutter_bloc: ^8.1.2
   bloc: ^8.1.1
