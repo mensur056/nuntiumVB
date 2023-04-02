@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grock/grock.dart';
+import 'package:nuntium/utility/constants/colors.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -10,7 +11,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Ink(
       decoration: BoxDecoration(
-        color: Colors.blue,
+        color: AppColors.primaryColors,
         borderRadius: 12.borderRadius,
       ),
       child: InkWell(
