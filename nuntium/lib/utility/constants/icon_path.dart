@@ -1,7 +1,7 @@
 enum IconPath {
-  logoPath('nunLogo');
+  logoPath('nunlogo');
 
   final String value;
   const IconPath(this.value);
-  String get toPng => 'assets/icon/ic_$value.png';
+  String get toPng => 'assets/icons/ic_$value.png';
 }

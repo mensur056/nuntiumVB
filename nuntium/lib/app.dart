@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
           )
         ],
         child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           title: 'Material App',
           home: const SplashPage(),
           onGenerateRoute: (settings) {
