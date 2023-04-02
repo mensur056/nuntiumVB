@@ -11,7 +11,9 @@ class CustomTextDescription extends StatelessWidget {
     return Text(
       title,
       textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: Colors.grey.shade400),
+      style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+            color: Colors.grey.shade400,
+          ),
     );
   }
 }
