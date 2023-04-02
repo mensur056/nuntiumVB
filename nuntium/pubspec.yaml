@@ -31,6 +31,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+
+#chache
+  shared_preferences: ^2.1.0
 #core
   get_it: ^7.2.0
 #statemanagement

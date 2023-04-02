@@ -3,6 +3,7 @@ import 'package:nuntium/data/model/requests/user_model.dart';
 import 'package:nuntium/data/model/responses/sign_in_response.dart';
 import 'package:nuntium/data/model/responses/sign_up_response.dart';
 import 'package:nuntium/keys.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthDataSource {
   Future<SignInResponse?> signIn(String email, String password) async {
@@ -29,5 +30,10 @@ class AuthDataSource {
       }
     }
     return null;
+  }
+
+  Future<bool?> isAuthenticated() async {
+    final sharedPref = await SharedPreferences.getInstance();
+    return sharedPref.getBool('logged');
   }
 }

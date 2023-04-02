@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nuntium/presentation/pages/home/home_page.dart';
 import 'package:nuntium/presentation/pages/splash/splash_page.dart';
 
 class MyApp extends StatelessWidget {
@@ -6,9 +7,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Material App',
-      home: SplashPage(),
+      home: const SplashPage(),
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case '/home':
+            return MaterialPageRoute(
+              builder: (context) {
+                return const HomePage();
+              },
+            );
+
+          default:
+        }
+        return null;
+      },
     );
   }
 }
