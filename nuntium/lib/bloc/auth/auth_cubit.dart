@@ -7,7 +7,7 @@ class AuthCubit extends Cubit<AuthState> {
   final IAuthRepository _authRepository;
   Future<void> checkAuth() async {
     final result = await _authRepository.checkAuth();
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 4));
     if (result.isSuccess()) {
       final isAuthenticated = result.tryGetSuccess()!;
       emit(isAuthenticated ? AuthSuccess() : AuthFailure());

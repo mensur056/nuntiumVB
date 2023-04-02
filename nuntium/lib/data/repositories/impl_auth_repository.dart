@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../locator/locator.dart';
 
-class ImplAuthrepository implements IAuthRepository {
+class ImplAuthRepository implements IAuthRepository {
   final _authDataSource = getIt.get<AuthDataSource>();
   @override
   Future<Result<SignInResponse, FailureGlobal>> signIn(String email, String password) async {
