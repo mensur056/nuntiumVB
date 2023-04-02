@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants/colors.dart';
-import '../../../constants/icon_path.dart';
+import '../../../utility/constants/colors.dart';
+import '../../../utility/constants/icon_path.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
