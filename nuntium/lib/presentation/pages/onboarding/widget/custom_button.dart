@@ -6,8 +6,10 @@ class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
     required this.onTap,
+    required this.title,
   });
   final VoidCallback onTap;
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Ink(
@@ -22,7 +24,7 @@ class CustomButton extends StatelessWidget {
           padding: 20.allP,
           child: Center(
               child: Text(
-            "Next",
+            title,
             style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: Colors.white),
           )),
         ),
