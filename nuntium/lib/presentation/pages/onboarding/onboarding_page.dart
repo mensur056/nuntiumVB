@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grock/grock.dart';
+import 'package:nuntium/presentation/global/custom_text_description.dart';
 import 'package:nuntium/utility/constants/colors.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../bloc/onboarding.dart/onboarding_cubit.dart';
+import '../../../bloc/onboarding/onboarding_cubit.dart';
 import '../../../utility/constants/image_path.dart';
-import 'widget/custom_button.dart';
+import '../../global/custom_button.dart';
+import '../../global/custom_text_title.dart';
 import 'widget/onboarding_image.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -33,13 +35,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 controller: controller,
                 children: [
                   OnboardingImage(
-                    image: ImagePath.onboarding2.toPath(),
+                    image: OnBoardingImagePath.onboarding2.toPath(),
                   ),
                   OnboardingImage(
-                    image: ImagePath.onboarding1.toPath(),
+                    image: OnBoardingImagePath.onboarding1.toPath(),
                   ),
                   OnboardingImage(
-                    image: ImagePath.onboarding3.toPath(),
+                    image: OnBoardingImagePath.onboarding3.toPath(),
                   ),
                 ],
               ),
@@ -63,22 +65,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
                             dotWidth: 16,
                           )),
                       const Spacer(),
-                      Text(
-                        "First To Know",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineMedium!
-                            .copyWith(color: Colors.black, fontWeight: FontWeight.bold),
-                      ),
+                      const CustomTextTitle(title: "First To Know"),
                       const Spacer(),
-                      Text(
-                        textAlign: TextAlign.center,
-                        "All news in one place, be the first to know last news",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineSmall!
-                            .copyWith(color: Colors.grey.shade400),
-                      ),
+                      const CustomTextDescription(
+                          title: 'All news in one place, be the first to know last news'),
                       const Spacer(),
                       CustomButton(
                         title: (context.watch<OnboardingCubit>().state == 3) ? "Done" : "Next",

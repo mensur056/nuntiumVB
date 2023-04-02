@@ -1,11 +1,10 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nuntium/presentation/pages/onboarding/onboarding_page.dart';
+import 'package:nuntium/presentation/pages/welcome/welcome_page.dart';
 
 import '../../../bloc/auth/auth_cubit.dart';
 import '../../../bloc/auth/auth_state.dart';
-import '../../../bloc/onboarding.dart/onboarding_cubit.dart';
 import '../../../utility/constants/colors.dart';
 import '../../../utility/constants/icon_path.dart';
 import '../home/home_page.dart';
@@ -53,10 +52,11 @@ class SplashPage extends StatelessWidget {
           } else if (state == AuthState.authenticated) {
             return const HomePage();
           } else {
-            return BlocProvider<OnboardingCubit>(
-              create: (context) => OnboardingCubit(),
-              child: const OnboardingPage(),
-            );
+            return const WelcomePage();
+            // return BlocProvider<OnboardingCubit>(
+            //   create: (context) => OnboardingCubit(),
+            //   child: const OnboardingPage(),
+            // );
             // return BlocProvider<SignInCubit>(
             //   create: (context) => SignInCubit(context.read<IAuthRepository>()),
             //   child: SignInPage(),
