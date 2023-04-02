@@ -5,8 +5,9 @@ import 'package:nuntium/utility/constants/colors.dart';
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
+    required this.onTap,
   });
-
+  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     return Ink(
@@ -15,6 +16,7 @@ class CustomButton extends StatelessWidget {
         borderRadius: 12.borderRadius,
       ),
       child: InkWell(
+        onTap: onTap,
         borderRadius: 12.borderRadius,
         child: Padding(
           padding: 20.allP,
