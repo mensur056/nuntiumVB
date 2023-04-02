@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 
 import 'app.dart';
 import 'firebase_options.dart';
+import 'locator/locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  setUp();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
