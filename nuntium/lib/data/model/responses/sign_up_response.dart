@@ -1,4 +1,4 @@
-class UserTokenModel {
+class SignUpResponse {
   String? kind;
   String? idToken;
   String? email;
@@ -6,10 +6,10 @@ class UserTokenModel {
   String? expiresIn;
   String? localId;
 
-  UserTokenModel(
+  SignUpResponse(
       {this.kind, this.idToken, this.email, this.refreshToken, this.expiresIn, this.localId});
 
-  UserTokenModel.fromJson(Map<String, dynamic> json) {
+  SignUpResponse.fromJson(Map<String, dynamic> json) {
     kind = json['kind'];
     idToken = json['idToken'];
     email = json['email'];

@@ -1,1 +1,4 @@
-class FailureGlobal {}
+class FailureGlobal {
+  final String message;
+  FailureGlobal(this.message);
+}
