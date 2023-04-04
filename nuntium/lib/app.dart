@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nuntium/data/contractors/i_auth_repository.dart';
 import 'package:nuntium/presentation/pages/home/home_page.dart';
 import 'package:nuntium/presentation/pages/splash/splash_page.dart';
+import 'package:nuntium/utility/constants/theme.dart';
 
 import 'bloc/auth/auth_cubit.dart';
 import 'data/repositories/impl_auth_repository.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
           )
         ],
         child: MaterialApp(
+          theme: AppTheme().ligthTheme,
           debugShowCheckedModeBanner: false,
           title: 'Material App',
           home: const SplashPage(),

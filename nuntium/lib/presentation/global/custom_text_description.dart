@@ -8,12 +8,7 @@ class CustomTextDescription extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    return Text(
-      title,
-      textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-            color: Colors.grey.shade400,
-          ),
-    );
+    return Text(title,
+        textAlign: TextAlign.center, style: Theme.of(context).textTheme.headlineSmall);
   }
 }
