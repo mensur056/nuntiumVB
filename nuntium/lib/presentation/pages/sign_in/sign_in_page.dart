@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:nuntium/presentation/global/custom_button.dart';
 import 'package:nuntium/presentation/global/custom_navigation_text_bar.dart';
 import 'package:nuntium/presentation/global/custom_text_description.dart';
@@ -51,6 +52,9 @@ class SignInPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  const SizedBox(
+                    height: 30,
+                  ),
                   const CustomTextTitle(title: "Welcome Back 👋"),
                   const SizedBox(
                     height: 20,
@@ -60,7 +64,7 @@ class SignInPage extends StatelessWidget {
                       title:
                           "I am happy to see you again. You can continue where you left off by logging in"),
                   const SizedBox(
-                    height: 20,
+                    height: 30,
                   ),
                   CustomTextField(
                       title: "Email Adress",
@@ -73,6 +77,20 @@ class SignInPage extends StatelessWidget {
                     iconPath: SignInIcon.locked.toPath(),
                     title: "Password",
                     emailController: passwordController,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Forgot Password?",
+                        style: GoogleFonts.nunito(
+                            color: Colors.grey, fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                   const SizedBox(
                     height: 20,
