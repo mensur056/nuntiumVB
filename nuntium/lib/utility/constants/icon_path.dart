@@ -1,4 +1,4 @@
-enum SignInIcon { google, facebook }
+enum SignInIcon { google, facebook, locked, email }
 
 extension SignInIconPath on SignInIcon {
   String toPath() {

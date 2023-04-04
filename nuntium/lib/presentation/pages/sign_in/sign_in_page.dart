@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nuntium/presentation/global/custom_button.dart';
 import 'package:nuntium/presentation/global/custom_text_description.dart';
+import 'package:nuntium/presentation/global/custom_text_title.dart';
 import 'package:nuntium/utility/constants/icon_path.dart';
 
 import '../../../bloc/sign_in/sign_in_cubit.dart';
@@ -11,7 +12,9 @@ import '../../../bloc/sign_up/sign_up_cubit.dart';
 import '../../../data/contractors/i_auth_repository.dart';
 import '../../../data/repositories/impl_auth_repository.dart';
 import '../../dialogs/failure_dialogs.dart';
+import '../../global/custom_text_field.dart';
 import '../sign_up/sign_up_page.dart';
+import 'widgets/social_media_sign_in.dart';
 
 class SignInPage extends StatelessWidget {
   SignInPage({super.key});
@@ -42,24 +45,25 @@ class SignInPage extends StatelessWidget {
         return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextField(
-                  controller: emailController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Email',
-                  ),
-                ),
+                const CustomTextTitle(title: "Welcome Back 👋"),
+                const CustomTextDescription(
+                    textAlign: TextAlign.start,
+                    title:
+                        "I am happy to see you again. You can continue where you left off by logging in"),
+                CustomTextField(
+                    title: "Email Adress",
+                    iconPath: SignInIcon.email.toPath(),
+                    emailController: emailController),
                 const SizedBox(
                   height: 20,
                 ),
-                TextField(
-                  controller: passwordController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Password',
-                  ),
+                CustomTextField(
+                  iconPath: SignInIcon.locked.toPath(),
+                  title: "Password",
+                  emailController: passwordController,
                 ),
                 const SizedBox(
                   height: 20,
@@ -99,21 +103,6 @@ class SignInPage extends StatelessWidget {
               ],
             ));
       },
-    );
-  }
-}
-
-class SocialMediaSignInButton extends StatelessWidget {
-  const SocialMediaSignInButton({super.key, required this.iconPath, required this.title});
-  final String iconPath;
-  final String title;
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        leading: Image.asset(iconPath),
-        title: Text(title),
-      ),
     );
   }
 }

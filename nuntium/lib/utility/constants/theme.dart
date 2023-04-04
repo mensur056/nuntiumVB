@@ -8,7 +8,7 @@ class AppTheme {
     buttonTheme: ButtonThemeData(buttonColor: AppColors.primaryColors),
     textTheme: TextTheme(
       headlineSmall: GoogleFonts.acme(
-        fontSize: 24,
+        fontSize: 22,
         color: Colors.grey,
       ),
       headlineMedium: GoogleFonts.acme(
