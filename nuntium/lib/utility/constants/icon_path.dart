@@ -1,7 +1,15 @@
-enum IconPath {
-  logoPath('nunlogo');
+enum SignInIcon { google, facebook }
 
-  final String value;
-  const IconPath(this.value);
-  String get toPng => 'assets/icons/ic_$value.png';
+extension SignInIconPath on SignInIcon {
+  String toPath() {
+    return 'assets/icons/ic_$name.png';
+  }
+}
+
+enum IconSplash { nunlogo }
+
+extension IconSplashPath on IconSplash {
+  String toPath() {
+    return 'assets/icons/ic_$name.png';
+  }
 }
