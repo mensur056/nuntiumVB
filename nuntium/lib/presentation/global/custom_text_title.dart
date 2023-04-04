@@ -8,6 +8,6 @@ class CustomTextTitle extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    return Text(title, style: Theme.of(context).textTheme.headlineMedium!);
+    return Text(title, style: Theme.of(context).textTheme.headlineLarge);
   }
 }

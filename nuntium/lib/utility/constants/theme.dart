@@ -7,17 +7,17 @@ class AppTheme {
     scaffoldBackgroundColor: Colors.white,
     buttonTheme: ButtonThemeData(buttonColor: AppColors.primaryColors),
     textTheme: TextTheme(
-      titleSmall: GoogleFonts.acme(
-        fontSize: 24,
-        color: Colors.white,
-      ),
       headlineSmall: GoogleFonts.acme(
         fontSize: 24,
         color: Colors.grey,
       ),
       headlineMedium: GoogleFonts.acme(
-        fontWeight: FontWeight.bold,
         fontSize: 28,
+        color: Colors.white,
+      ),
+      headlineLarge: GoogleFonts.acme(
+        fontWeight: FontWeight.bold,
+        fontSize: 32,
         color: Colors.black,
       ),
     ),
