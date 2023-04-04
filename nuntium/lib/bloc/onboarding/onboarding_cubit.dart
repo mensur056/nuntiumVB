@@ -10,6 +10,7 @@ class OnboardingCubit extends Cubit<int> {
     emit(state + 1);
     if (state == 4) {
       Navigator.of(context).push(CircularClipRoute(
+        transitionDuration: const Duration(seconds: 2),
         expandFrom: context,
         builder: (context) {
           return const WelcomePage();

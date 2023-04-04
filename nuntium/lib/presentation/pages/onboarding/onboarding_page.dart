@@ -23,7 +23,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: BlocBuilder<OnboardingCubit, int>(
+    return Scaffold(body: _body());
+  }
+
+  BlocBuilder<OnboardingCubit, int> _body() {
+    return BlocBuilder<OnboardingCubit, int>(
       builder: (context, state) {
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -84,6 +88,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
           ],
         );
       },
-    ));
+    );
   }
 }
