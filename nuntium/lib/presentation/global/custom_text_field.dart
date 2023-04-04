@@ -17,10 +17,10 @@ class CustomTextField extends StatelessWidget {
     return TextField(
       controller: emailController,
       decoration: InputDecoration(
-        suffixIcon: Image.asset(iconPath),
-        border: const OutlineInputBorder(),
-        hintText: title,
-      ),
+          prefixIcon: Image.asset(iconPath),
+          border: const OutlineInputBorder(),
+          hintText: title,
+          hintStyle: Theme.of(context).textTheme.headlineSmall),
     );
   }
 }

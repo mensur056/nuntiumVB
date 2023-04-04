@@ -49,10 +49,16 @@ class SignInPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const CustomTextTitle(title: "Welcome Back 👋"),
+                const SizedBox(
+                  height: 20,
+                ),
                 const CustomTextDescription(
                     textAlign: TextAlign.start,
                     title:
                         "I am happy to see you again. You can continue where you left off by logging in"),
+                const SizedBox(
+                  height: 20,
+                ),
                 CustomTextField(
                     title: "Email Adress",
                     iconPath: SignInIcon.email.toPath(),
