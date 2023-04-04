@@ -7,12 +7,16 @@ class AppTheme {
     scaffoldBackgroundColor: Colors.white,
     buttonTheme: ButtonThemeData(buttonColor: AppColors.primaryColors),
     textTheme: TextTheme(
+      bodySmall: GoogleFonts.nunito(
+        fontSize: 22,
+        color: Colors.black,
+      ),
       headlineSmall: GoogleFonts.acme(
         fontSize: 22,
         color: Colors.grey,
       ),
-      headlineMedium: GoogleFonts.acme(
-        fontSize: 28,
+      headlineMedium: GoogleFonts.nunito(
+        fontSize: 24,
         color: Colors.white,
       ),
       headlineLarge: GoogleFonts.acme(

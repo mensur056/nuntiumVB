@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -17,10 +18,10 @@ class CustomTextField extends StatelessWidget {
     return TextField(
       controller: emailController,
       decoration: InputDecoration(
-          prefixIcon: Image.asset(iconPath),
+          prefixIcon: SizedBox(height: 50, width: 50, child: Image.asset(iconPath)),
           border: const OutlineInputBorder(),
           hintText: title,
-          hintStyle: Theme.of(context).textTheme.headlineSmall),
+          hintStyle: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w400)),
     );
   }
 }
