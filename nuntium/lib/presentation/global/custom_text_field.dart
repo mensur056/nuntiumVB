@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:grock/grock.dart';
 
 import '../../utility/constants/colors.dart';
 
@@ -24,7 +25,10 @@ class CustomTextField extends StatelessWidget {
     return TextField(
       controller: controller,
       decoration: InputDecoration(
-        prefixIcon: IconButton(onPressed: onPressed, icon: iconPath),
+        prefixIcon: Padding(
+          padding: 10.onlyBottomP,
+          child: IconButton(onPressed: onPressed, icon: iconPath),
+        ),
         suffixIcon: suffixIcon,
         hintText: title,
         hintStyle: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w400),
