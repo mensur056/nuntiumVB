@@ -49,7 +49,7 @@ class SplashPage extends StatelessWidget {
                 ],
               ),
             );
-          } else if (state == AuthState.unauthenticated) {
+          } else if (state == AuthState.authenticated) {
             return const HomePage();
           } else {
             // return const HomePage();

@@ -1,27 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../utility/constants/colors.dart';
+
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
-    required this.emailController,
+    required this.controller,
     required this.title,
     required this.iconPath,
+    this.onPressed,
+    this.suffixIcon,
   });
 
-  final TextEditingController emailController;
+  final TextEditingController controller;
   final String title;
-  final String iconPath;
+  final Widget iconPath;
+  final VoidCallback? onPressed;
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: emailController,
+      controller: controller,
       decoration: InputDecoration(
-          prefixIcon: SizedBox(height: 50, width: 50, child: Image.asset(iconPath)),
-          border: const OutlineInputBorder(),
-          hintText: title,
-          hintStyle: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w400)),
+        prefixIcon: IconButton(onPressed: onPressed, icon: iconPath),
+        suffixIcon: suffixIcon,
+        hintText: title,
+        hintStyle: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w400),
+        fillColor: AppColors.textFieldColor,
+        filled: true,
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+          borderSide: BorderSide.none,
+        ),
+      ),
     );
   }
 }

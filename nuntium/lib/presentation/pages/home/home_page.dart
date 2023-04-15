@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grock/grock.dart';
-import 'package:nuntium/utility/constants/colors.dart';
+import 'package:nuntium/presentation/global/custom_text_field.dart';
 
 import '../../../utility/constants/strings.dart';
 import '../../global/custom_text_description.dart';
@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
             children: [
               const _HomeTitle(),
               const _HomeSubtitle(),
-              const _HomeSearchField(),
+              _HomeSearchField(),
               const _HomeChip(),
               SizedBox(
                 height: context.dynamicHeight(0.3),
@@ -82,22 +82,17 @@ class _HomeChip extends StatelessWidget {
 }
 
 class _HomeSearchField extends StatelessWidget {
-  const _HomeSearchField();
-
+  final TextEditingController searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-        prefixIcon: IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
-        suffixIcon: IconButton(onPressed: () {}, icon: const Icon(Icons.mic)),
-        hintText: HomeStrings.hintTextSearch,
-        fillColor: AppColors.textFieldColor,
-        filled: true,
-        border: const OutlineInputBorder(
-          borderSide: BorderSide.none,
+    return CustomTextField(
+        suffixIcon: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.mic),
         ),
-      ),
-    );
+        controller: searchController,
+        title: HomeStrings.hintTextSearch,
+        iconPath: IconButton(onPressed: () {}, icon: const Icon(Icons.search)));
   }
 }
 
