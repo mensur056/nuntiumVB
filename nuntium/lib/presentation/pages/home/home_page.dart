@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grock/grock.dart';
 import 'package:nuntium/presentation/global/custom_text_field.dart';
+import 'package:nuntium/utility/constants/icon_path.dart';
 
 import '../../../utility/constants/strings.dart';
 import '../../global/custom_text_description.dart';
@@ -18,12 +19,19 @@ class HomePage extends StatelessWidget {
           child: ListView(
             children: [
               const _HomeTitle(),
+              const SizedBox(
+                height: 20,
+              ),
               const _HomeSubtitle(),
+              const SizedBox(
+                height: 30,
+              ),
               _HomeSearchField(),
               const _HomeChip(),
               SizedBox(
                 height: context.dynamicHeight(0.3),
                 child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
                   itemCount: 5,
                   itemBuilder: (BuildContext context, int index) {
                     return const Placeholder();
@@ -32,8 +40,9 @@ class HomePage extends StatelessWidget {
               ),
               const _HomeRecommended(),
               SizedBox(
-                height: context.dynamicHeight(0.2),
+                height: context.dynamicHeight(0.4),
                 child: ListView.builder(
+                  itemCount: 10,
                   itemBuilder: (context, index) {
                     return const ListTile(
                       title: Text('sdfsd'),
@@ -86,13 +95,10 @@ class _HomeSearchField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomTextField(
-        suffixIcon: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.mic),
-        ),
+        suffixIcon: InkWell(onTap: () {}, child: Image.asset(HomeIcon.mic.toPath())),
         controller: searchController,
         title: HomeStrings.hintTextSearch,
-        iconPath: IconButton(onPressed: () {}, icon: const Icon(Icons.search)));
+        iconPath: HomeIcon.search.toPath());
   }
 }
 

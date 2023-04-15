@@ -68,7 +68,7 @@ class SignInPage extends StatelessWidget {
                   ),
                   CustomTextField(
                       title: "Email Adress",
-                      iconPath: Image.asset(SignInIcon.email.toPath()),
+                      iconPath: SignInIcon.email.toPath(),
                       controller: emailController),
                   const SizedBox(
                     height: 20,
@@ -78,7 +78,7 @@ class SignInPage extends StatelessWidget {
                       onPressed: () {},
                       icon: const Icon(Icons.visibility_outlined),
                     ),
-                    iconPath: Image.asset(SignInIcon.locked.toPath()),
+                    iconPath: SignInIcon.locked.toPath(),
                     title: "Password",
                     controller: passwordController,
                   ),

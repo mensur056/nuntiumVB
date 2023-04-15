@@ -13,3 +13,11 @@ extension IconSplashPath on IconSplash {
     return 'assets/icons/ic_$name.png';
   }
 }
+
+enum HomeIcon { mic, search }
+
+extension HomeIconExtension on HomeIcon {
+  String toPath() {
+    return 'assets/icons/ic_$name.png';
+  }
+}
