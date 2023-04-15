@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grock/grock.dart';
+import 'package:nuntium/bloc/home/home_state.dart';
 import 'package:nuntium/presentation/global/custom_text_field.dart';
 import 'package:nuntium/utility/constants/icon_path.dart';
 
+import '../../../bloc/home/home_cubit.dart';
 import '../../../utility/constants/strings.dart';
 import '../../global/custom_text_description.dart';
 import '../../global/custom_text_title.dart';
@@ -14,45 +17,66 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: 20.allP,
-          child: ListView(
-            children: [
-              const _HomeTitle(),
-              const SizedBox(
-                height: 20,
-              ),
-              const _HomeSubtitle(),
-              const SizedBox(
-                height: 30,
-              ),
-              _HomeSearchField(),
-              const _HomeChip(),
-              SizedBox(
-                height: context.dynamicHeight(0.3),
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 5,
-                  itemBuilder: (BuildContext context, int index) {
-                    return const Placeholder();
-                  },
+        child: BlocBuilder<HomeCubit, HomeState>(
+          builder: (context, state) {
+            if (state is HomeInProgress) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (state is HomeFailure) {
+              return const Center(child: Text("There is a Error"));
+            } else {
+              return Padding(
+                padding: 20.allP,
+                child: ListView(
+                  children: [
+                    const _HomeTitle(),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const _HomeSubtitle(),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    _HomeSearchField(),
+                    _HomeChip(),
+                    const _ImageCardListView(),
+                    const _HomeRecommended(),
+                    SizedBox(
+                      height: context.dynamicHeight(0.4),
+                      child: ListView.builder(
+                        itemCount: 10,
+                        itemBuilder: (context, index) {
+                          return const ListTile(
+                            title: Text('sdfsd'),
+                          );
+                        },
+                      ),
+                    )
+                  ],
                 ),
-              ),
-              const _HomeRecommended(),
-              SizedBox(
-                height: context.dynamicHeight(0.4),
-                child: ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return const ListTile(
-                      title: Text('sdfsd'),
-                    );
-                  },
-                ),
-              )
-            ],
-          ),
+              );
+            }
+          },
         ),
+      ),
+    );
+  }
+}
+
+class _ImageCardListView extends StatelessWidget {
+  const _ImageCardListView();
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: context.dynamicHeight(0.3),
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 5,
+        itemBuilder: (BuildContext context, int index) {
+          return const Placeholder();
+        },
       ),
     );
   }
@@ -73,17 +97,29 @@ class _HomeRecommended extends StatelessWidget {
 }
 
 class _HomeChip extends StatelessWidget {
-  const _HomeChip();
-
+  final List chipItems = ['Random', 'Sports', 'Gaming', 'Politics', 'Art', 'Food'];
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: context.dynamicHeight(0.1),
       child: ListView.builder(
-        itemCount: 5,
+        itemCount: chipItems.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return const Chip(label: Text("data"));
+          return Padding(
+            padding: 8.onlyRightP,
+            child: Chip(
+                label: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                onTap: () {},
+                child: Text(
+                  chipItems[index],
+                  style: const TextStyle(fontSize: 16),
+                ),
+              ),
+            )),
+          );
         },
       ),
     );

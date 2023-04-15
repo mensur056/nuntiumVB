@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:multiple_result/src/result.dart';
+import 'package:multiple_result/multiple_result.dart';
 import 'package:nuntium/data/contractors/i_home_repository.dart';
 import 'package:nuntium/data/data_sources/home_data_source.dart';
 import 'package:nuntium/presentation/global/failure.dart';
