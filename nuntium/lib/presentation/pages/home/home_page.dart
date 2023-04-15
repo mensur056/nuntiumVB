@@ -118,7 +118,7 @@ class _HomeChipState extends State<_HomeChip> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
-            padding: 8.onlyRightP,
+            padding: 12.onlyRightP,
             child: Chip(
                 labelPadding: const EdgeInsets.all(8),
                 backgroundColor:
@@ -131,11 +131,16 @@ class _HomeChipState extends State<_HomeChip> {
                         selectIndex = index;
                       });
                     },
-                    child: Text(
-                      chipItems[index],
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: selectIndex == index ? Colors.white : Colors.black,
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.2,
+                      child: Center(
+                        child: Text(
+                          chipItems[index],
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: selectIndex == index ? Colors.white : Colors.black,
+                          ),
+                        ),
                       ),
                     ),
                   ),
