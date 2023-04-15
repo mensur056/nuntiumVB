@@ -1,38 +1,123 @@
 import 'package:flutter/material.dart';
 import 'package:grock/grock.dart';
+import 'package:nuntium/utility/constants/colors.dart';
+
+import '../../../utility/constants/strings.dart';
+import '../../global/custom_text_description.dart';
+import '../../global/custom_text_title.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: ListView(
-        children: [
-          const Text("Browse"),
-          const Text("Discover things of this world"),
-          const TextField(),
-          SizedBox(
-            height: context.dynamicHeight(0.1),
-            child: ListView.builder(
-              itemCount: 5,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return const Chip(label: Text("data"));
-              },
-            ),
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: 20.allP,
+          child: ListView(
+            children: [
+              const _HomeTitle(),
+              const _HomeSubtitle(),
+              const _HomeSearchField(),
+              const _HomeChip(),
+              SizedBox(
+                height: context.dynamicHeight(0.3),
+                child: ListView.builder(
+                  itemCount: 5,
+                  itemBuilder: (BuildContext context, int index) {
+                    return const Placeholder();
+                  },
+                ),
+              ),
+              const _HomeRecommended(),
+              SizedBox(
+                height: context.dynamicHeight(0.2),
+                child: ListView.builder(
+                  itemBuilder: (context, index) {
+                    return const ListTile(
+                      title: Text('sdfsd'),
+                    );
+                  },
+                ),
+              )
+            ],
           ),
-          SizedBox(
-            height: context.dynamicHeight(0.3),
-            child: ListView.builder(
-              itemCount: 5,
-              itemBuilder: (BuildContext context, int index) {
-                return const Placeholder();
-              },
-            ),
-          ),
-        ],
+        ),
       ),
+    );
+  }
+}
+
+class _HomeRecommended extends StatelessWidget {
+  const _HomeRecommended();
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const Text(HomeStrings.recommended),
+        TextButton(onPressed: () {}, child: const Text(HomeStrings.seeAll))
+      ],
+    );
+  }
+}
+
+class _HomeChip extends StatelessWidget {
+  const _HomeChip();
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: context.dynamicHeight(0.1),
+      child: ListView.builder(
+        itemCount: 5,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          return const Chip(label: Text("data"));
+        },
+      ),
+    );
+  }
+}
+
+class _HomeSearchField extends StatelessWidget {
+  const _HomeSearchField();
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      decoration: InputDecoration(
+        prefixIcon: IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+        suffixIcon: IconButton(onPressed: () {}, icon: const Icon(Icons.mic)),
+        hintText: HomeStrings.hintTextSearch,
+        fillColor: AppColors.textFieldColor,
+        filled: true,
+        border: const OutlineInputBorder(
+          borderSide: BorderSide.none,
+        ),
+      ),
+    );
+  }
+}
+
+class _HomeSubtitle extends StatelessWidget {
+  const _HomeSubtitle();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Align(
+        alignment: Alignment.topLeft, child: CustomTextDescription(title: HomeStrings.discover));
+  }
+}
+
+class _HomeTitle extends StatelessWidget {
+  const _HomeTitle();
+
+  @override
+  Widget build(BuildContext context) {
+    return const CustomTextTitle(
+      title: HomeStrings.browse,
     );
   }
 }
