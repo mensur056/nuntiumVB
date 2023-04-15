@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grock/grock.dart';
 import 'package:nuntium/bloc/home/home_state.dart';
 import 'package:nuntium/presentation/global/custom_text_field.dart';
+import 'package:nuntium/utility/constants/colors.dart';
 import 'package:nuntium/utility/constants/icon_path.dart';
 
 import '../../../bloc/home/home_cubit.dart';
@@ -96,8 +97,18 @@ class _HomeRecommended extends StatelessWidget {
   }
 }
 
-class _HomeChip extends StatelessWidget {
+class _HomeChip extends StatefulWidget {
+  @override
+  State<_HomeChip> createState() => _HomeChipState();
+}
+
+class _HomeChipState extends State<_HomeChip> {
   final List chipItems = ['Random', 'Sports', 'Gaming', 'Politics', 'Art', 'Food'];
+
+  final Color chipColor = Colors.red;
+
+  int selectIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -109,16 +120,26 @@ class _HomeChip extends StatelessWidget {
           return Padding(
             padding: 8.onlyRightP,
             child: Chip(
-                label: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: InkWell(
-                onTap: () {},
-                child: Text(
-                  chipItems[index],
-                  style: const TextStyle(fontSize: 16),
-                ),
-              ),
-            )),
+                labelPadding: const EdgeInsets.all(8),
+                backgroundColor:
+                    selectIndex == index ? AppColors.primaryColors : AppColors.chipPrimaryColor,
+                label: FittedBox(
+                  fit: BoxFit.fill,
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        selectIndex = index;
+                      });
+                    },
+                    child: Text(
+                      chipItems[index],
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: selectIndex == index ? Colors.white : Colors.black,
+                      ),
+                    ),
+                  ),
+                )),
           );
         },
       ),
