@@ -1,9 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grock/grock.dart';
 import 'package:nuntium/bloc/home/home_state.dart';
-import 'package:nuntium/data/model/responses/news_model.dart';
 import 'package:nuntium/presentation/global/custom_text_field.dart';
 import 'package:nuntium/utility/constants/colors.dart';
 import 'package:nuntium/utility/constants/icon_path.dart';
@@ -14,9 +12,7 @@ import '../../global/custom_text_description.dart';
 import '../../global/custom_text_title.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
-
-  List<QuerySnapshot<NewsModel>>? newsModelItem;
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
