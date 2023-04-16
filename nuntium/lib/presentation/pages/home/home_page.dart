@@ -63,7 +63,35 @@ class HomePage extends StatelessWidget {
                                 values[index].image ?? '',
                                 fit: BoxFit.cover,
                               ),
-                              Image.asset(HomeIcon.save.toPath())
+                              Positioned.fill(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Padding(
+                                      padding: 12.paddingOnlyTopRight,
+                                      child: InkWell(
+                                          onTap: () {}, child: Image.asset(HomeIcon.save.toPath())),
+                                    ),
+                                    const Spacer(),
+                                    Padding(
+                                      padding: 12.allP,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            values[index].title ?? '',
+                                            style: Theme.of(context).textTheme.displaySmall,
+                                          ),
+                                          Text(
+                                            values[index].description ?? '',
+                                            style: Theme.of(context).textTheme.displayMedium,
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              )
                             ]),
                           );
                         },

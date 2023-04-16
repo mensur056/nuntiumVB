@@ -5,8 +5,16 @@ import 'package:nuntium/utility/constants/colors.dart';
 class AppTheme {
   final ThemeData ligthTheme = ThemeData(
     scaffoldBackgroundColor: Colors.white,
-    buttonTheme: ButtonThemeData(buttonColor: AppColors.primaryColors),
+    buttonTheme: const ButtonThemeData(buttonColor: AppColors.primaryColors),
     textTheme: TextTheme(
+      displaySmall: GoogleFonts.nunito(
+        fontSize: 16,
+        color: AppColors.chipPrimaryColor,
+      ),
+      displayMedium: GoogleFonts.nunito(
+        fontSize: 22,
+        color: Colors.white,
+      ),
       bodySmall: GoogleFonts.nunito(
         fontSize: 22,
         color: Colors.black,
