@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
                 case '/home':
                   return MaterialPageRoute(
                     builder: (context) {
-                      return const HomePage();
+                      return HomePage();
                     },
                   );
 

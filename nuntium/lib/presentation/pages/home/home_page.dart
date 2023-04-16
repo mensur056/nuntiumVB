@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grock/grock.dart';
 import 'package:nuntium/bloc/home/home_state.dart';
+import 'package:nuntium/data/model/responses/news_model.dart';
 import 'package:nuntium/presentation/global/custom_text_field.dart';
 import 'package:nuntium/utility/constants/colors.dart';
 import 'package:nuntium/utility/constants/icon_path.dart';
@@ -12,7 +14,9 @@ import '../../global/custom_text_description.dart';
 import '../../global/custom_text_title.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({Key? key}) : super(key: key);
+
+  List<QuerySnapshot<NewsModel>>? newsModelItem;
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +28,8 @@ class HomePage extends StatelessWidget {
               return const Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (state is HomeFailure) {
-              return const Center(child: Text("There is a Error"));
-            } else {
+            } else if (state is HomeSuccess) {
+              final values = state.items.docs.map((e) => e.data()).toList();
               return Padding(
                 padding: 20.allP,
                 child: ListView(
@@ -40,8 +43,32 @@ class HomePage extends StatelessWidget {
                       height: 30,
                     ),
                     _HomeSearchField(),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     _HomeChip(),
-                    const _ImageCardListView(),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(
+                      height: context.dynamicHeight(0.3),
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: values.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Padding(
+                            padding: 20.paddingOnlyRight,
+                            child: Stack(children: [
+                              Image.network(
+                                values[index].image ?? '',
+                                fit: BoxFit.cover,
+                              ),
+                              Image.asset(HomeIcon.save.toPath())
+                            ]),
+                          );
+                        },
+                      ),
+                    ),
                     const _HomeRecommended(),
                     SizedBox(
                       height: context.dynamicHeight(0.4),
@@ -57,27 +84,11 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               );
+            } else {
+              return const Center(child: Text("There is a Error"));
             }
           },
         ),
-      ),
-    );
-  }
-}
-
-class _ImageCardListView extends StatelessWidget {
-  const _ImageCardListView();
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: context.dynamicHeight(0.3),
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: 5,
-        itemBuilder: (BuildContext context, int index) {
-          return const Placeholder();
-        },
       ),
     );
   }

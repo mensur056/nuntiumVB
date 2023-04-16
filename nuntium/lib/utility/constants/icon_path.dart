@@ -1,4 +1,4 @@
-enum SignInIcon { google, facebook, locked, email }
+enum SignInIcon { google, facebook, locked, email, save }
 
 extension SignInIconPath on SignInIcon {
   String toPath() {
@@ -14,7 +14,7 @@ extension IconSplashPath on IconSplash {
   }
 }
 
-enum HomeIcon { mic, search }
+enum HomeIcon { mic, search, save }
 
 extension HomeIconExtension on HomeIcon {
   String toPath() {

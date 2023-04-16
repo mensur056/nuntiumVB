@@ -11,7 +11,8 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeInProgress());
     final result = await _homeRepository.fetchNews();
     if (result.isSuccess()) {
-      emit(HomeSuccess());
+      final homeResult = result.tryGetSuccess();
+      emit(HomeSuccess(homeResult!));
     } else {
       emit(HomeFailure('There is Error'));
     }
