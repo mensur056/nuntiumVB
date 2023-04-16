@@ -1,3 +1,7 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'news_model.g.dart';
+
+@JsonSerializable()
 class NewsModel {
   String? image;
   String? description;
@@ -5,17 +9,11 @@ class NewsModel {
 
   NewsModel({this.image, this.description, this.title});
 
-  NewsModel.fromJson(Map<String, dynamic> json) {
-    image = json['image'];
-    description = json['description'];
-    title = json['title'];
+  factory NewsModel.fromJson(Map<String, dynamic> json) {
+    return _$NewsModelFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['image'] = image;
-    data['description'] = description;
-    data['title'] = title;
-    return data;
+    return _$NewsModelToJson(this);
   }
 }

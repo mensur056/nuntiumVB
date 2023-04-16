@@ -1,3 +1,7 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'sign_in_response.g.dart';
+
+@JsonSerializable()
 class SignInResponse {
   String? kind;
   String? localId;
@@ -9,23 +13,11 @@ class SignInResponse {
   SignInResponse(
       {this.kind, this.localId, this.email, this.displayName, this.idToken, this.registered});
 
-  SignInResponse.fromJson(Map<String, dynamic> json) {
-    kind = json['kind'];
-    localId = json['localId'];
-    email = json['email'];
-    displayName = json['displayName'];
-    idToken = json['idToken'];
-    registered = json['registered'];
+  factory SignInResponse.fromJson(Map<String, dynamic> json) {
+    return _$SignInResponseFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['kind'] = kind;
-    data['localId'] = localId;
-    data['email'] = email;
-    data['displayName'] = displayName;
-    data['idToken'] = idToken;
-    data['registered'] = registered;
-    return data;
+    return _$SignInResponseToJson(this);
   }
 }
