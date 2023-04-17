@@ -18,6 +18,40 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _body(),
+      bottomNavigationBar: BottomNavigationBar(
+        elevation: 12,
+        items: const [
+          BottomNavigationBarItem(
+            backgroundColor: AppColors.textFieldColor,
+            label: '',
+            icon: Icon(
+              Icons.home,
+              color: Colors.black,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: '',
+            icon: Icon(
+              Icons.apps_rounded,
+              color: Colors.black,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: '',
+            icon: Icon(
+              Icons.save,
+              color: Colors.black,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: '',
+            icon: Icon(
+              Icons.person_off_outlined,
+              color: Colors.black,
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -100,7 +134,7 @@ class HomePage extends StatelessWidget {
                   ),
                   const _HomeRecommended(),
                   SizedBox(
-                    height: context.dynamicHeight(0.4),
+                    height: context.dynamicHeight(0.5),
                     child: ListView.builder(
                       itemCount: values.length,
                       itemBuilder: (context, index) {
@@ -150,23 +184,26 @@ class _HomeRecommended extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const Text(
-          HomeStrings.recommended,
-          style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w500),
-        ),
-        TextButton(
-            onPressed: () {},
-            child: const Text(
-              HomeStrings.seeAll,
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 20,
-              ),
-            ))
-      ],
+    return Padding(
+      padding: 10.verticalP,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Text(
+            HomeStrings.recommended,
+            style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w500),
+          ),
+          TextButton(
+              onPressed: () {},
+              child: const Text(
+                HomeStrings.seeAll,
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 20,
+                ),
+              ))
+        ],
+      ),
     );
   }
 }
