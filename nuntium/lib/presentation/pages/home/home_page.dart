@@ -18,40 +18,18 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _body(),
-      bottomNavigationBar: BottomNavigationBar(
-        elevation: 12,
-        items: const [
-          BottomNavigationBarItem(
-            backgroundColor: AppColors.textFieldColor,
-            label: '',
-            icon: Icon(
-              Icons.home,
-              color: Colors.black,
-            ),
-          ),
-          BottomNavigationBarItem(
-            label: '',
-            icon: Icon(
-              Icons.apps_rounded,
-              color: Colors.black,
-            ),
-          ),
-          BottomNavigationBarItem(
-            label: '',
-            icon: Icon(
-              Icons.save,
-              color: Colors.black,
-            ),
-          ),
-          BottomNavigationBarItem(
-            label: '',
-            icon: Icon(
-              Icons.person_off_outlined,
-              color: Colors.black,
-            ),
-          ),
-        ],
-      ),
+      bottomNavigationBar: _bottomNavigationBar(),
+    );
+  }
+
+  BottomNavigationBar _bottomNavigationBar() {
+    return BottomNavigationBar(
+      items: [
+        BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.home.toPath())),
+        BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.apps.toPath())),
+        BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.save.toPath())),
+        BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.profile.toPath())),
+      ],
     );
   }
 

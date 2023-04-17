@@ -14,7 +14,14 @@ extension IconSplashPath on IconSplash {
   }
 }
 
-enum HomeIcon { mic, search, save }
+enum HomeIcon {
+  mic,
+  search,
+  save,
+  profile,
+  home,
+  apps,
+}
 
 extension HomeIconExtension on HomeIcon {
   String toPath() {
