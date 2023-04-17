@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../bloc/sign_up/sign_up_cubit.dart';
 import '../../../bloc/sign_up/sign_up_state.dart';
+import '../../../utility/constants/strings.dart';
 import '../../dialogs/failure_dialogs.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -37,7 +38,7 @@ class SignUpPage extends StatelessWidget {
                   controller: emailController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: 'Username',
+                    hintText: SignUpStrings.hintTextUsername,
                   ),
                 ),
                 const SizedBox(
@@ -47,7 +48,7 @@ class SignUpPage extends StatelessWidget {
                   controller: passwordController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: 'Password',
+                    hintText: SignUpStrings.hintTextPassword,
                   ),
                 ),
                 const SizedBox(

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grock/grock.dart';
-import 'package:nuntium/bloc/home/home_state.dart';
-import 'package:nuntium/presentation/global/custom_text_field.dart';
-import 'package:nuntium/utility/constants/colors.dart';
-import 'package:nuntium/utility/constants/icon_path.dart';
 
 import '../../../bloc/home/home_cubit.dart';
+import '../../../bloc/home/home_state.dart';
+import '../../../utility/constants/colors.dart';
+import '../../../utility/constants/icon_path.dart';
 import '../../../utility/constants/strings.dart';
 import '../../global/custom_text_description.dart';
+import '../../global/custom_text_field.dart';
 import '../../global/custom_text_title.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,102 +17,106 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: BlocBuilder<HomeCubit, HomeState>(
-          builder: (context, state) {
-            if (state is HomeInProgress) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (state is HomeSuccess) {
-              final values = state.items.docs.map((e) => e.data()).toList();
-              return Padding(
-                padding: 20.allP,
-                child: ListView(
-                  children: [
-                    const _HomeTitle(),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const _HomeSubtitle(),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    _HomeSearchField(),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    _HomeChip(),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    SizedBox(
-                      height: context.dynamicHeight(0.3),
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: values.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Padding(
-                            padding: 20.paddingOnlyRight,
-                            child: Stack(children: [
-                              Image.network(
-                                values[index].image ?? '',
-                                fit: BoxFit.cover,
-                              ),
-                              Positioned.fill(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Padding(
-                                      padding: 12.paddingOnlyTopRight,
-                                      child: InkWell(
-                                          onTap: () {}, child: Image.asset(HomeIcon.save.toPath())),
+      body: _body(),
+    );
+  }
+
+  Widget _body() {
+    return SafeArea(
+      child: BlocBuilder<HomeCubit, HomeState>(
+        builder: (context, state) {
+          if (state is HomeInProgress) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is HomeSuccess) {
+            final values = state.items.docs.map((e) => e.data()).toList();
+            return Padding(
+              padding: 20.allP,
+              child: ListView(
+                children: [
+                  const _HomeTitle(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const _HomeSubtitle(),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  _HomeSearchField(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  _HomeChip(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    height: context.dynamicHeight(0.3),
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: values.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: 20.paddingOnlyRight,
+                          child: Stack(children: [
+                            Image.network(
+                              values[index].image ?? '',
+                              fit: BoxFit.cover,
+                            ),
+                            Positioned.fill(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Padding(
+                                    padding: 12.paddingOnlyTopRight,
+                                    child: InkWell(
+                                        onTap: () {}, child: Image.asset(HomeIcon.save.toPath())),
+                                  ),
+                                  const Spacer(),
+                                  Padding(
+                                    padding: 12.allP,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          values[index].title ?? '',
+                                          style: Theme.of(context).textTheme.displaySmall,
+                                        ),
+                                        Text(
+                                          values[index].description ?? '',
+                                          style: Theme.of(context).textTheme.displayMedium,
+                                        )
+                                      ],
                                     ),
-                                    const Spacer(),
-                                    Padding(
-                                      padding: 12.allP,
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            values[index].title ?? '',
-                                            style: Theme.of(context).textTheme.displaySmall,
-                                          ),
-                                          Text(
-                                            values[index].description ?? '',
-                                            style: Theme.of(context).textTheme.displayMedium,
-                                          )
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              )
-                            ]),
-                          );
-                        },
-                      ),
+                                  )
+                                ],
+                              ),
+                            )
+                          ]),
+                        );
+                      },
                     ),
-                    const _HomeRecommended(),
-                    SizedBox(
-                      height: context.dynamicHeight(0.4),
-                      child: ListView.builder(
-                        itemCount: 10,
-                        itemBuilder: (context, index) {
-                          return const ListTile(
-                            title: Text('sdfsd'),
-                          );
-                        },
-                      ),
-                    )
-                  ],
-                ),
-              );
-            } else {
-              return const Center(child: Text("There is a Error"));
-            }
-          },
-        ),
+                  ),
+                  const _HomeRecommended(),
+                  SizedBox(
+                    height: context.dynamicHeight(0.4),
+                    child: ListView.builder(
+                      itemCount: 10,
+                      itemBuilder: (context, index) {
+                        return const ListTile(
+                          title: Text('sdfsd'),
+                        );
+                      },
+                    ),
+                  )
+                ],
+              ),
+            );
+          } else {
+            return const Center(child: Text("There is a Error"));
+          }
+        },
       ),
     );
   }
@@ -124,9 +128,21 @@ class _HomeRecommended extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text(HomeStrings.recommended),
-        TextButton(onPressed: () {}, child: const Text(HomeStrings.seeAll))
+        const Text(
+          HomeStrings.recommended,
+          style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w500),
+        ),
+        TextButton(
+            onPressed: () {},
+            child: const Text(
+              HomeStrings.seeAll,
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 20,
+              ),
+            ))
       ],
     );
   }
