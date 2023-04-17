@@ -19,7 +19,8 @@ class AppTheme {
         fontSize: 22,
         color: Colors.black,
       ),
-      headlineSmall: GoogleFonts.acme(
+      headlineSmall: GoogleFonts.nunito(
+        fontWeight: FontWeight.w600,
         fontSize: 22,
         color: Colors.grey,
       ),

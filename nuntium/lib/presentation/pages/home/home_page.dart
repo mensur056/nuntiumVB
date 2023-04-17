@@ -102,10 +102,33 @@ class HomePage extends StatelessWidget {
                   SizedBox(
                     height: context.dynamicHeight(0.4),
                     child: ListView.builder(
-                      itemCount: 10,
+                      itemCount: values.length,
                       itemBuilder: (context, index) {
-                        return const ListTile(
-                          title: Text('sdfsd'),
+                        return Padding(
+                          padding: 8.onlyBottomP,
+                          child: Row(
+                            children: [
+                              Image.network(
+                                values[index].image ?? '',
+                                height: 96,
+                              ),
+                              Expanded(
+                                child: ListTile(
+                                  title: CustomTextDescription(
+                                    textAlign: TextAlign.start,
+                                    title: values[index].title ?? '',
+                                  ),
+                                  subtitle: Text(
+                                    values[index].description ?? '',
+                                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                        ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         );
                       },
                     ),
