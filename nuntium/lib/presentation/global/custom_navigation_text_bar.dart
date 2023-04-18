@@ -9,8 +9,13 @@ import '../pages/sign_up/sign_up_page.dart';
 class CustomNavigationTextBar extends StatelessWidget {
   const CustomNavigationTextBar({
     super.key,
+    required this.text,
+    required this.buttonText,
+    required this.onPressed,
   });
-
+  final String text;
+  final String buttonText;
+  final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,7 +24,7 @@ class CustomNavigationTextBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "Don't have an account?",
+            text,
             style: Theme.of(context).textTheme.bodySmall,
           ),
           TextButton(
@@ -37,7 +42,7 @@ class CustomNavigationTextBar extends StatelessWidget {
                 ));
               },
               child: Text(
-                'Sign Up',
+                buttonText,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold),
               )),
         ],

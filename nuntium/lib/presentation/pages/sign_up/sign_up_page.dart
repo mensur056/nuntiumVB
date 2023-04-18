@@ -7,6 +7,7 @@ import '../../../utility/constants/icon_path.dart';
 import '../../../utility/constants/strings.dart';
 import '../../dialogs/failure_dialogs.dart';
 import '../../global/custom_button.dart';
+import '../../global/custom_navigation_text_bar.dart';
 import '../../global/custom_text_description.dart';
 import '../../global/custom_text_field.dart';
 import '../../global/custom_text_title.dart';
@@ -20,88 +21,90 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        bottomNavigationBar: CustomNavigationTextBar(
+            buttonText: SignUpStrings.signIn, text: SignUpStrings.haveAccount, onPressed: () {}),
         body: BlocConsumer<SignUpCubit, SignUpState>(
-      buildWhen: (_, current) => current is! SignUpSuccess,
-      listenWhen: (_, current) => current is SignUpFailure || current is SignUpSuccess,
-      listener: (context, state) {
-        if (state is SignUpFailure) {
-          showDialog(
-            context: context,
-            builder: (context) {
-              return const FailureDialog();
-            },
-          );
-        } else if (state is SignUpSuccess) {
-          Navigator.pushReplacementNamed(context, '/home');
-        }
-      },
-      builder: (context, state) {
-        return Center(
-          child: SingleChildScrollView(
-            physics: const ClampingScrollPhysics(),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const SizedBox(
-                    height: 30,
+          buildWhen: (_, current) => current is! SignUpSuccess,
+          listenWhen: (_, current) => current is SignUpFailure || current is SignUpSuccess,
+          listener: (context, state) {
+            if (state is SignUpFailure) {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return const FailureDialog();
+                },
+              );
+            } else if (state is SignUpSuccess) {
+              Navigator.pushReplacementNamed(context, '/home');
+            }
+          },
+          builder: (context, state) {
+            return SafeArea(
+              child: SingleChildScrollView(
+                physics: const ClampingScrollPhysics(),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      const CustomTextTitle(title: SignUpStrings.welcome),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const CustomTextDescription(
+                          textAlign: TextAlign.start, title: SignUpStrings.description),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      CustomTextField(
+                          title: SignUpStrings.hintTextUsername,
+                          iconPath: SignUpIcon.profile.toPath(),
+                          controller: usernameController),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomTextField(
+                        iconPath: SignUpIcon.email.toPath(),
+                        title: SignUpStrings.hintEmail,
+                        controller: emailController,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomTextField(
+                        iconPath: SignUpIcon.locked.toPath(),
+                        title: SignUpStrings.hintTextPassword,
+                        controller: passwordController,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomTextField(
+                        suffixIcon: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.visibility_outlined),
+                        ),
+                        iconPath: SignUpIcon.locked.toPath(),
+                        title: SignUpStrings.hintRepeatPassword,
+                        controller: passwordController,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomButton(
+                        title: SignUpStrings.buttonText,
+                        onTap: () {},
+                      ),
+                    ],
                   ),
-                  const CustomTextTitle(title: SignUpStrings.welcome),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const CustomTextDescription(
-                      textAlign: TextAlign.start, title: SignUpStrings.description),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  CustomTextField(
-                      title: SignUpStrings.hintTextUsername,
-                      iconPath: SignUpIcon.profile.toPath(),
-                      controller: usernameController),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  CustomTextField(
-                    iconPath: SignUpIcon.email.toPath(),
-                    title: SignUpStrings.hintEmail,
-                    controller: emailController,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  CustomTextField(
-                    iconPath: SignUpIcon.locked.toPath(),
-                    title: SignUpStrings.hintTextPassword,
-                    controller: passwordController,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  CustomTextField(
-                    suffixIcon: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.visibility_outlined),
-                    ),
-                    iconPath: SignUpIcon.locked.toPath(),
-                    title: SignUpStrings.hintRepeatPassword,
-                    controller: passwordController,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  CustomButton(
-                    title: SignUpStrings.buttonText,
-                    onTap: () {},
-                  ),
-                ],
+                ),
               ),
-            ),
-          ),
-        );
-      },
-    ));
+            );
+          },
+        ));
   }
 }

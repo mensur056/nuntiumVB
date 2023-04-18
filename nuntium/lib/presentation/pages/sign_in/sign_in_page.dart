@@ -22,7 +22,8 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _body(),
-      bottomNavigationBar: const CustomNavigationTextBar(),
+      bottomNavigationBar: CustomNavigationTextBar(
+          buttonText: SignInStrings.buttonText, text: SignInStrings.signUp, onPressed: () {}),
     );
   }
 
