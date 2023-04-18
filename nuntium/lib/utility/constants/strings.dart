@@ -20,6 +20,13 @@ class SignInStrings {
 }
 
 class SignUpStrings {
+  static const String description =
+      'Hello, I guess you are new around here. You can start using the application after sign up.';
+  static const String welcome = "Welcome to Nuntium 👋";
+  static const String haveAccount = 'Already have an account?';
+  static const String buttonText = 'Sign in';
   static const String hintTextUsername = 'Username';
   static const String hintTextPassword = 'Password';
+  static const String hintEmail = 'Email Adress';
+  static const String hintRepeatPassword = 'Reapeat Password';
 }

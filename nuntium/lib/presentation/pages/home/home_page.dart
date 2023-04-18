@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
       items: [
         BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.home.toPath())),
         BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.apps.toPath())),
-        BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.save.toPath())),
+        BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.bookmark.toPath())),
         BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.profile.toPath())),
       ],
     );

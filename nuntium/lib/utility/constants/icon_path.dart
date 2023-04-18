@@ -14,16 +14,17 @@ extension IconSplashPath on IconSplash {
   }
 }
 
-enum HomeIcon {
-  mic,
-  search,
-  save,
-  profile,
-  home,
-  apps,
-}
+enum HomeIcon { mic, search, save, profile, home, apps, bookmark }
 
 extension HomeIconExtension on HomeIcon {
+  String toPath() {
+    return 'assets/icons/ic_$name.png';
+  }
+}
+
+enum SignUpIcon { locked, email, profile }
+
+extension SignUpPath on SignUpIcon {
   String toPath() {
     return 'assets/icons/ic_$name.png';
   }
