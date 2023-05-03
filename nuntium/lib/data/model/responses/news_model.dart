@@ -1,8 +1,9 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'news_model.g.dart';
 
 @JsonSerializable()
-class NewsModel {
+class NewsModel extends Equatable {
   String? image;
   String? description;
   String? title;
@@ -16,4 +17,7 @@ class NewsModel {
   Map<String, dynamic> toJson() {
     return _$NewsModelToJson(this);
   }
+
+  @override
+  List<Object?> get props => [image, description, title];
 }

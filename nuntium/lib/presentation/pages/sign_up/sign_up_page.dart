@@ -16,6 +16,8 @@ class SignUpPage extends StatelessWidget {
   SignUpPage({super.key});
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController repasswordController = TextEditingController();
+
   final TextEditingController usernameController = TextEditingController();
 
   @override
@@ -90,14 +92,18 @@ class SignUpPage extends StatelessWidget {
                         ),
                         iconPath: SignUpIcon.locked.toPath(),
                         title: SignUpStrings.hintRepeatPassword,
-                        controller: passwordController,
+                        controller: repasswordController,
                       ),
                       const SizedBox(
                         height: 20,
                       ),
                       CustomButton(
                         title: SignUpStrings.buttonText,
-                        onTap: () {},
+                        onTap: () {
+                          context
+                              .read<SignUpCubit>()
+                              .signUp(emailController.text, passwordController.text);
+                        },
                       ),
                     ],
                   ),
