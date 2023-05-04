@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nuntium/bloc/home/home_detail_cubit.dart';
 import 'package:nuntium/data/contractors/i_auth_repository.dart';
 import 'package:nuntium/data/contractors/i_home_repository.dart';
 import 'package:nuntium/presentation/pages/home/home_page.dart';
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
             ),
             BlocProvider<HomeCubit>(
               create: (context) => HomeCubit(context.read<IHomeRepository>())..fetchNewsItem(),
-            )
+            ),
+
           ],
           child: MaterialApp(
             theme: AppTheme().ligthTheme,
@@ -39,7 +41,7 @@ class MyApp extends StatelessWidget {
                 case '/home':
                   return MaterialPageRoute(
                     builder: (context) {
-                      return HomePage();
+                      return const HomePage();
                     },
                   );
 

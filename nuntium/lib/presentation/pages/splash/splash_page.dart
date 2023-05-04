@@ -8,6 +8,7 @@ import '../../../bloc/sign_in/sign_in_cubit.dart';
 import '../../../data/contractors/i_auth_repository.dart';
 import '../../../utility/constants/colors.dart';
 import '../../../utility/constants/icon_path.dart';
+import '../home/home_page.dart';
 import '../sign_in/sign_in_page.dart';
 import '../sign_up/sign_up_page.dart';
 
@@ -56,7 +57,7 @@ class SplashPage extends StatelessWidget {
               child: SignUpPage(),
             );
           } else {
-            // return const HomePage();
+            return const HomePage();
             // return const WelcomePage();
             // return BlocProvider<OnboardingCubit>(
             //   create: (context) => OnboardingCubit(),

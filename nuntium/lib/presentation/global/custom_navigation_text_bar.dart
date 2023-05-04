@@ -28,19 +28,7 @@ class CustomNavigationTextBar extends StatelessWidget {
             style: Theme.of(context).textTheme.bodySmall,
           ),
           TextButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) {
-                    return RepositoryProvider<IAuthRepository>(
-                      create: (context) => ImplAuthRepository(),
-                      child: BlocProvider<SignUpCubit>(
-                        create: (context) => SignUpCubit(context.read<IAuthRepository>()),
-                        child: SignUpPage(),
-                      ),
-                    );
-                  },
-                ));
-              },
+              onPressed:onPressed,
               child: Text(
                 buttonText,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold),

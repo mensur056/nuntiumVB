@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nuntium/presentation/pages/sign_in/sign_in_page.dart';
 
+import '../../../bloc/sign_in/sign_in_cubit.dart';
 import '../../../bloc/sign_up/sign_up_cubit.dart';
 import '../../../bloc/sign_up/sign_up_state.dart';
+import '../../../data/contractors/i_auth_repository.dart';
 import '../../../utility/constants/icon_path.dart';
 import '../../../utility/constants/strings.dart';
 import '../../dialogs/failure_dialogs.dart';
@@ -17,14 +20,26 @@ class SignUpPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController repasswordController = TextEditingController();
-
   final TextEditingController usernameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         bottomNavigationBar: CustomNavigationTextBar(
-            buttonText: SignUpStrings.signIn, text: SignUpStrings.haveAccount, onPressed: () {}),
+            buttonText: SignUpStrings.signIn,
+            text: SignUpStrings.haveAccount,
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) {
+                  return BlocProvider(
+                    create: (context) => SignInCubit(
+                      context.read<IAuthRepository>(),
+                    ),
+                    child: SignInPage(),
+                  );
+                },
+              ));
+            }),
         body: BlocConsumer<SignUpCubit, SignUpState>(
           buildWhen: (_, current) => current is! SignUpSuccess,
           listenWhen: (_, current) => current is SignUpFailure || current is SignUpSuccess,

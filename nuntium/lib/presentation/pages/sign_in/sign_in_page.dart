@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kartal/kartal.dart';
+import 'package:nuntium/bloc/sign_up/sign_up_cubit.dart';
+import 'package:nuntium/presentation/pages/sign_up/sign_up_page.dart';
 
 import '../../../bloc/sign_in/sign_in_cubit.dart';
 import '../../../bloc/sign_in/sign_in_state.dart';
+import '../../../data/contractors/i_auth_repository.dart';
 import '../../../utility/constants/icon_path.dart';
 import '../../../utility/constants/strings.dart';
 import '../../dialogs/failure_dialogs.dart';
@@ -23,7 +27,14 @@ class SignInPage extends StatelessWidget {
     return Scaffold(
       body: _body(),
       bottomNavigationBar: CustomNavigationTextBar(
-          buttonText: SignInStrings.buttonText, text: SignInStrings.signUp, onPressed: () {}),
+          buttonText: SignInStrings.signUp, text: SignInStrings.haveAccount, onPressed: () {
+            context.navigateToPage(BlocProvider(
+              create: (context) => SignUpCubit(
+                context.read<IAuthRepository>(),
+              ),
+              child: SignUpPage(),
+            ));
+      }),
     );
   }
 
