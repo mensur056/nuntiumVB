@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nuntium/presentation/pages/sign_in/sign_in_page.dart';
-
 import '../../../bloc/sign_in/sign_in_cubit.dart';
 import '../../../bloc/sign_up/sign_up_cubit.dart';
 import '../../../bloc/sign_up/sign_up_state.dart';

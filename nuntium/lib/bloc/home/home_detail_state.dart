@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:nuntium/data/model/responses/category_model.dart';
 
 abstract class HomeDetailState {}
@@ -6,7 +5,7 @@ abstract class HomeDetailState {}
 class HomeDetailInitial extends HomeDetailState {}
 
 class HomeDetailSuccess extends HomeDetailState {
-  final QuerySnapshot<CategoryModel> items;
+  final List<CategoryModel> items;
 
   HomeDetailSuccess(this.items);
 }

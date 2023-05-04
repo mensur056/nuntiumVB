@@ -21,10 +21,10 @@ class ImplHomeRepository extends IHomeRepository {
   }
 
   @override
-  Future<Result<QuerySnapshot<CategoryModel>, FailureGlobal>> fetchCategory() async {
+  Future<Result<List<CategoryModel>, FailureGlobal>> fetchCategory() async {
     try {
       final result = await _homeDataSource.fetchCategoryItem();
-      return Success(result);
+      return Success(result!);
     } catch (e) {
       return Error(FailureGlobal('Error'));
     }

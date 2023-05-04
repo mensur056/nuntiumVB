@@ -17,7 +17,7 @@ class HomeDataSource {
     return response;
   }
 
-  Future<QuerySnapshot<CategoryModel>> fetchCategoryItem() async {
+  Future<List<CategoryModel>?> fetchCategoryItem() async {
     CollectionReference news = FirebaseFirestore.instance.collection("category");
     final response = await news.withConverter<CategoryModel>(
       fromFirestore: (snapshot, options) {
@@ -28,6 +28,10 @@ class HomeDataSource {
         return value.toJson();
       },
     ).get();
-    return response;
+    if (response.docs.isNotEmpty) {
+      final values = response.docs.map((e) => e.data()).toList();
+      return values;
+    }
+    return null;
   }
 }

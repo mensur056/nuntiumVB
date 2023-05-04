@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grock/grock.dart';
 import 'package:nuntium/bloc/home/home_detail_state.dart';
+import 'package:nuntium/data/model/responses/category_model.dart';
 
 import '../../../bloc/home/home_detail_cubit.dart';
 
@@ -16,6 +17,9 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Add Item Page"),
+      ),
       body: BlocBuilder<HomeDetailCubit, HomeDetailState>(
         builder: (context, state) {
           if (state is HomeDetailInProgress) {
@@ -23,16 +27,22 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
               child: CircularProgressIndicator(),
             );
           } else if (state is HomeDetailSuccess) {
-            final values = state.items.docs.map((e) => e.data()).toList();
             return Padding(
-              padding: 20.allP,
-              child: ListView.builder(
-                itemCount:values.length ,
-
-                itemBuilder: (context, index) {
-                return Text(values[index].name??'');
-              },)
-            );
+                padding: 20.allP,
+                child: Column(
+                  children: [
+                    DropdownButtonFormField<CategoryModel>(
+                      items: state.items.map((e) {
+                        return DropdownMenuItem<CategoryModel>(
+                          value: e,
+                          child: Text(e.name ?? ''),
+                        );
+                      }).toList(),
+                      onChanged: (value) {},
+                    ),
+                    TextFormField(),
+                  ],
+                ));
           } else {
             return const Center(child: Text("There is a Error"));
           }

@@ -26,12 +26,7 @@ class HomePage extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) {
-              return BlocProvider(
-                create: (context) => HomeDetailCubit(
-                  context.read<IHomeRepository>()..fetchCategory(),
-                ),
-                child: const HomeDetailPage(),
-              );
+              return const HomeDetailPage();
             },
           ));
         },
@@ -43,14 +38,10 @@ class HomePage extends StatelessWidget {
   BottomNavigationBar _bottomNavigationBar() {
     return BottomNavigationBar(
       items: [
-        BottomNavigationBarItem(
-            label: '', icon: Image.asset(HomeIcon.home.toPath())),
-        BottomNavigationBarItem(
-            label: '', icon: Image.asset(HomeIcon.apps.toPath())),
-        BottomNavigationBarItem(
-            label: '', icon: Image.asset(HomeIcon.bookmark.toPath())),
-        BottomNavigationBarItem(
-            label: '', icon: Image.asset(HomeIcon.profile.toPath())),
+        BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.home.toPath())),
+        BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.apps.toPath())),
+        BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.bookmark.toPath())),
+        BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.profile.toPath())),
       ],
     );
   }
@@ -105,28 +96,21 @@ class HomePage extends StatelessWidget {
                                   Padding(
                                     padding: 12.paddingOnlyTopRight,
                                     child: InkWell(
-                                        onTap: () {},
-                                        child: Image.asset(
-                                            HomeIcon.save.toPath())),
+                                        onTap: () {}, child: Image.asset(HomeIcon.save.toPath())),
                                   ),
                                   const Spacer(),
                                   Padding(
                                     padding: 12.allP,
                                     child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           values[index].title ?? '',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .displaySmall,
+                                          style: Theme.of(context).textTheme.displaySmall,
                                         ),
                                         Text(
                                           values[index].description ?? '',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .displayMedium,
+                                          style: Theme.of(context).textTheme.displayMedium,
                                         )
                                       ],
                                     ),
@@ -161,10 +145,7 @@ class HomePage extends StatelessWidget {
                                   ),
                                   subtitle: Text(
                                     values[index].description ?? '',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall
-                                        ?.copyWith(
+                                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 18,
                                         ),
@@ -201,8 +182,7 @@ class _HomeRecommended extends StatelessWidget {
         children: [
           const Text(
             HomeStrings.recommended,
-            style: TextStyle(
-                color: Colors.black, fontSize: 24, fontWeight: FontWeight.w500),
+            style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w500),
           ),
           TextButton(
               onPressed: () {},
@@ -225,14 +205,7 @@ class _HomeChip extends StatefulWidget {
 }
 
 class _HomeChipState extends State<_HomeChip> {
-  final List chipItems = [
-    'Random',
-    'Sports',
-    'Gaming',
-    'Politics',
-    'Art',
-    'Food'
-  ];
+  final List chipItems = ['Random', 'Sports', 'Gaming', 'Politics', 'Art', 'Food'];
 
   final Color chipColor = Colors.red;
 
@@ -250,9 +223,8 @@ class _HomeChipState extends State<_HomeChip> {
             padding: 12.onlyRightP,
             child: Chip(
                 labelPadding: const EdgeInsets.all(8),
-                backgroundColor: selectIndex == index
-                    ? AppColors.primaryColors
-                    : AppColors.chipPrimaryColor,
+                backgroundColor:
+                    selectIndex == index ? AppColors.primaryColors : AppColors.chipPrimaryColor,
                 label: FittedBox(
                   fit: BoxFit.fill,
                   child: InkWell(
@@ -268,9 +240,7 @@ class _HomeChipState extends State<_HomeChip> {
                           chipItems[index],
                           style: TextStyle(
                             fontSize: 16,
-                            color: selectIndex == index
-                                ? Colors.white
-                                : Colors.black,
+                            color: selectIndex == index ? Colors.white : Colors.black,
                           ),
                         ),
                       ),
@@ -290,8 +260,7 @@ class _HomeSearchField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomTextField(
-        suffixIcon:
-            InkWell(onTap: () {}, child: Image.asset(HomeIcon.mic.toPath())),
+        suffixIcon: InkWell(onTap: () {}, child: Image.asset(HomeIcon.mic.toPath())),
         controller: searchController,
         title: HomeStrings.hintTextSearch,
         iconPath: HomeIcon.search.toPath());
@@ -304,8 +273,7 @@ class _HomeSubtitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Align(
-        alignment: Alignment.topLeft,
-        child: CustomTextDescription(title: HomeStrings.discover));
+        alignment: Alignment.topLeft, child: CustomTextDescription(title: HomeStrings.discover));
   }
 }
 

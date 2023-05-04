@@ -7,5 +7,5 @@ import '../model/responses/news_model.dart';
 abstract class IHomeRepository {
   Future<Result<QuerySnapshot<NewsModel>, FailureGlobal>> fetchNews();
 
-  Future<Result<QuerySnapshot<CategoryModel>, FailureGlobal>> fetchCategory();
+  Future<Result<List<CategoryModel>, FailureGlobal>> fetchCategory();
 }

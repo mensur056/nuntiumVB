@@ -4,12 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nuntium/bloc/sign_up/sign_up_cubit.dart';
 import '../../../bloc/auth/auth_cubit.dart';
 import '../../../bloc/auth/auth_state.dart';
-import '../../../bloc/sign_in/sign_in_cubit.dart';
 import '../../../data/contractors/i_auth_repository.dart';
 import '../../../utility/constants/colors.dart';
 import '../../../utility/constants/icon_path.dart';
 import '../home/home_page.dart';
-import '../sign_in/sign_in_page.dart';
 import '../sign_up/sign_up_page.dart';
 
 class SplashPage extends StatelessWidget {
@@ -63,10 +61,10 @@ class SplashPage extends StatelessWidget {
             //   create: (context) => OnboardingCubit(),
             //   child: const OnboardingPage(),
             // );
-            return BlocProvider<SignInCubit>(
-              create: (context) => SignInCubit(context.read<IAuthRepository>()),
-              child: SignInPage(),
-            );
+            // return BlocProvider<SignInCubit>(
+            //   create: (context) => SignInCubit(context.read<IAuthRepository>()),
+            //   child: SignInPage(),
+            // );
           }
         },
       ),
