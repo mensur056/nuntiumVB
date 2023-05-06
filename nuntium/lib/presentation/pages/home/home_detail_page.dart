@@ -41,6 +41,23 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
                       onChanged: (value) {},
                     ),
                     TextFormField(),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: SizedBox(
+                        height: context.dynamicHeight(0.2),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
+                          child: const Center(child: Icon(Icons.add_a_photo_outlined)),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    ElevatedButton(onPressed: () {}, child: const Center(child: Text("Send")))
                   ],
                 ));
           } else {

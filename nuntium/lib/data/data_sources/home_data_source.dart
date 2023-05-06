@@ -3,7 +3,7 @@ import 'package:nuntium/data/model/responses/category_model.dart';
 import '../model/responses/news_model.dart';
 
 class HomeDataSource {
-  Future<QuerySnapshot<NewsModel>> fetchAllItemFromDatabase() async {
+  Future<List<NewsModel>?> fetchAllItemFromDatabase() async {
     CollectionReference news = FirebaseFirestore.instance.collection("news");
     final response = await news.withConverter<NewsModel>(
       fromFirestore: (snapshot, options) {
@@ -14,7 +14,11 @@ class HomeDataSource {
         return value.toJson();
       },
     ).get();
-    return response;
+    if (response.docs.isNotEmpty) {
+      final values = response.docs.map((e) => e.data()).toList();
+      return values;
+    }
+    return null;
   }
 
   Future<List<CategoryModel>?> fetchCategoryItem() async {

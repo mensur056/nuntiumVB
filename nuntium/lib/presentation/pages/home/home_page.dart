@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grock/grock.dart';
-import 'package:nuntium/data/contractors/i_home_repository.dart';
 import 'package:nuntium/presentation/pages/home/home_detail_page.dart';
 
 import '../../../bloc/home/home_cubit.dart';
-import '../../../bloc/home/home_detail_cubit.dart';
 import '../../../bloc/home/home_state.dart';
 import '../../../utility/constants/colors.dart';
 import '../../../utility/constants/icon_path.dart';
@@ -55,7 +53,7 @@ class HomePage extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else if (state is HomeSuccess) {
-            final values = state.items.docs.map((e) => e.data()).toList();
+            final values = state.items;
             return Padding(
               padding: 20.allP,
               child: ListView(
