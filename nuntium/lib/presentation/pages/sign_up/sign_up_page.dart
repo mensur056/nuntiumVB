@@ -1,3 +1,4 @@
+import 'package:circular_clip_route/circular_clip_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nuntium/presentation/pages/sign_in/sign_in_page.dart';
@@ -28,7 +29,9 @@ class SignUpPage extends StatelessWidget {
             buttonText: SignUpStrings.signIn,
             text: SignUpStrings.haveAccount,
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
+              Navigator.of(context).push(CircularClipRoute(
+                transitionDuration: const Duration(seconds: 2),
+                expandFrom: context,
                 builder: (context) {
                   return BlocProvider(
                     create: (context) => SignInCubit(

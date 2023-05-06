@@ -50,13 +50,15 @@ dependencies:
   multiple_result: ^4.0.0
   equatable: ^2.0.5 
   cupertino_icons: ^1.0.2
-  kartal: ^2.8.0
-  grock: ^0.2.5
+
 #ui
   animated_text_kit: ^4.2.2
   smooth_page_indicator: ^1.0.1
   circular_clip_route: ^0.2.0+3
   google_fonts: ^4.0.3
+  image_picker: ^0.8.7+4
+  kartal: ^2.8.0
+  grock: ^0.2.5
   
 dev_dependencies:
   flutter_test:

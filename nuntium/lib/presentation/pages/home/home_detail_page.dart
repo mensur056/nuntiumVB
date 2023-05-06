@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grock/grock.dart';
 import 'package:nuntium/bloc/home/home_detail_state.dart';
 import 'package:nuntium/data/model/responses/category_model.dart';
+import 'package:nuntium/presentation/pages/home/logic/home_detail_logic.dart';
 
 import '../../../bloc/home/home_detail_cubit.dart';
 
@@ -14,6 +15,13 @@ class HomeDetailPage extends StatefulWidget {
 }
 
 class _HomeDetailPageState extends State<HomeDetailPage> {
+  late final HomeDetailLogic _homeDetailLogic;
+  @override
+  void initState() {
+    super.initState();
+    _homeDetailLogic = HomeDetailLogic();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,25 +40,34 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
                 child: Column(
                   children: [
                     DropdownButtonFormField<CategoryModel>(
+                      hint: const Text('Select Category'),
                       items: state.items.map((e) {
                         return DropdownMenuItem<CategoryModel>(
                           value: e,
                           child: Text(e.name ?? ''),
                         );
                       }).toList(),
-                      onChanged: (value) {},
+                      onChanged: (value) {
+                        _homeDetailLogic.updateCategory(value);
+                      },
                     ),
                     TextFormField(),
                     const SizedBox(
                       height: 30,
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () async {
+                        await _homeDetailLogic.pickImage();
+                        setState(() {});
+                      },
                       child: SizedBox(
                         height: context.dynamicHeight(0.2),
                         child: DecoratedBox(
                           decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-                          child: const Center(child: Icon(Icons.add_a_photo_outlined)),
+                          child: Center(
+                              child: _homeDetailLogic.selectedImage != null
+                                  ? Image.memory(_homeDetailLogic.selectedImage!)
+                                  : const Icon(Icons.add_a_photo_outlined)),
                         ),
                       ),
                     ),
