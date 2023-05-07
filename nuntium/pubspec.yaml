@@ -43,6 +43,7 @@ dependencies:
 #firebase
   cloud_firestore: ^4.5.0
   firebase_core: ^2.9.0
+  firebase_storage: ^11.1.2
 #service
   dio: ^5.1.1
   json_serializable: ^6.6.1

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grock/grock.dart';
-import 'package:nuntium/presentation/pages/home/home_detail_page.dart';
 
 import '../../../bloc/home/home_cubit.dart';
 import '../../../bloc/home/home_state.dart';
@@ -11,6 +10,7 @@ import '../../../utility/constants/strings.dart';
 import '../../global/custom_text_description.dart';
 import '../../global/custom_text_field.dart';
 import '../../global/custom_text_title.dart';
+import 'home_detail_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
