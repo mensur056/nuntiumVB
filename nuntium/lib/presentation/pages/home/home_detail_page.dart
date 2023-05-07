@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grock/grock.dart';
 import 'package:kartal/kartal.dart';
-import 'package:nuntium/bloc/home/home_detail_state.dart';
+import 'package:nuntium/bloc/home/detail/home_detail_state.dart';
 import 'package:nuntium/data/model/responses/category_model.dart';
 import 'package:nuntium/presentation/pages/home/logic/home_detail_logic.dart';
-import '../../../bloc/home/home_detail_cubit.dart';
+import '../../../bloc/home/detail/home_detail_cubit.dart';
 
 class HomeDetailPage extends StatefulWidget {
   const HomeDetailPage({super.key});

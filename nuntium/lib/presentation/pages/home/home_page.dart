@@ -53,7 +53,9 @@ class HomePage extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else if (state is HomeSuccess) {
-            final values = state.items;
+            final newsValue = state.newsItems;
+            final tagValue = state.tagItems;
+
             return Padding(
               padding: 20.allP,
               child: ListView(
@@ -70,7 +72,38 @@ class HomePage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  _HomeChip(),
+                  SizedBox(
+                    height: context.dynamicHeight(0.1),
+                    child: ListView.builder(
+                      itemCount: tagValue?.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: 12.onlyRightP,
+                          child: Chip(
+                              labelPadding: const EdgeInsets.all(8),
+                              backgroundColor: AppColors.primaryColors,
+                              label: FittedBox(
+                                fit: BoxFit.fill,
+                                child: InkWell(
+                                  onTap: () {},
+                                  child: SizedBox(
+                                    width: MediaQuery.of(context).size.width * 0.2,
+                                    child: Center(
+                                      child: Text(
+                                        tagValue?[index].name ?? '',
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )),
+                        );
+                      },
+                    ),
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
@@ -78,13 +111,13 @@ class HomePage extends StatelessWidget {
                     height: context.dynamicHeight(0.3),
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: values.length,
+                      itemCount: newsValue?.length,
                       itemBuilder: (BuildContext context, int index) {
                         return Padding(
                           padding: 20.paddingOnlyRight,
                           child: Stack(children: [
                             Image.network(
-                              values[index].image ?? '',
+                              newsValue?[index].image ?? '',
                               fit: BoxFit.cover,
                             ),
                             Positioned.fill(
@@ -103,11 +136,11 @@ class HomePage extends StatelessWidget {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          values[index].title ?? '',
+                                          newsValue?[index].title ?? '',
                                           style: Theme.of(context).textTheme.displaySmall,
                                         ),
                                         Text(
-                                          values[index].description ?? '',
+                                          newsValue?[index].description ?? '',
                                           style: Theme.of(context).textTheme.displayMedium,
                                         )
                                       ],
@@ -125,24 +158,24 @@ class HomePage extends StatelessWidget {
                   SizedBox(
                     height: context.dynamicHeight(0.5),
                     child: ListView.builder(
-                      itemCount: values.length,
+                      itemCount: newsValue?.length,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: 8.onlyBottomP,
                           child: Row(
                             children: [
                               Image.network(
-                                values[index].image ?? '',
+                                newsValue?[index].image ?? '',
                                 height: 96,
                               ),
                               Expanded(
                                 child: ListTile(
                                   title: CustomTextDescription(
                                     textAlign: TextAlign.start,
-                                    title: values[index].title ?? '',
+                                    title: newsValue?[index].title ?? '',
                                   ),
                                   subtitle: Text(
-                                    values[index].description ?? '',
+                                    newsValue?[index].description ?? '',
                                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 18,

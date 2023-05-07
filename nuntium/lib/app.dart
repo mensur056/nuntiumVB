@@ -8,7 +8,7 @@ import 'package:nuntium/utility/constants/theme.dart';
 
 import 'bloc/auth/auth_cubit.dart';
 import 'bloc/home/home_cubit.dart';
-import 'bloc/home/home_detail_cubit.dart';
+import 'bloc/home/detail/home_detail_cubit.dart';
 import 'data/repositories/impl_auth_repository.dart';
 import 'data/repositories/impl_home_repository.dart';
 
@@ -27,8 +27,7 @@ class MyApp extends StatelessWidget {
               create: (context) => AuthCubit(context.read<IAuthRepository>())..checkAuth(),
             ),
             BlocProvider<HomeCubit>(
-              create: (context) => HomeCubit(context.read<IHomeRepository>())..fetchNewsItem(),
-            ),
+                create: (context) => HomeCubit(context.read<IHomeRepository>())..fetchNewsItem()),
             BlocProvider<HomeDetailCubit>(
               create: (context) =>
                   HomeDetailCubit(context.read<IHomeRepository>())..fetchCategoryItem(),

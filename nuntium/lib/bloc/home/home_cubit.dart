@@ -9,10 +9,14 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> fetchNewsItem() async {
     emit(HomeInProgress());
-    final result = await _homeRepository.fetchNews();
-    if (result.isSuccess()) {
-      final homeResult = result.tryGetSuccess();
-      emit(HomeSuccess(homeResult!));
+    final newsResult = await _homeRepository.fetchNews();
+    final tagResult = await _homeRepository.fetchTag();
+
+    if (newsResult.isSuccess() && tagResult.isSuccess()) {
+      final homeNewsResult = newsResult.tryGetSuccess();
+      final homeTagResult = tagResult.tryGetSuccess();
+
+      emit(HomeSuccess(newsItems: homeNewsResult, tagItems: homeTagResult));
     } else {
       emit(HomeFailure('There is Error'));
     }

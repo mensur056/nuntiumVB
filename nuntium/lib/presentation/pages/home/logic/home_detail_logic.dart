@@ -10,6 +10,7 @@ import 'package:kartal/kartal.dart';
 import '../../../../data/data_sources/home_data_source.dart';
 import '../../../../data/model/responses/category_model.dart';
 import '../../../../data/model/responses/news_model.dart';
+import '../../../../utility/ image_pick/image_pick.dart';
 
 class HomeDetailLogic {
   final HomeDataSource homeDataSource = HomeDataSource();
@@ -84,15 +85,5 @@ class HomeDetailLogic {
 
     final imageRef = storageRef.child(_selectedFile!.name);
     return imageRef;
-  }
-}
-
-class PickImage {
-  final _picker = ImagePicker();
-
-  Future<XFile?> pickImageFromGallery() async {
-    // Pick an image
-    final image = await _picker.pickImage(source: ImageSource.gallery);
-    return image;
   }
 }
