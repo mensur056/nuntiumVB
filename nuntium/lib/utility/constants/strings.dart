@@ -3,8 +3,17 @@ class HomeStrings {
   static const String discover = "Discover things of this world";
   static const String recommended = "Recommended for you";
   static const String seeAll = "See All";
-
   static const String hintTextSearch = "Search";
+}
+
+class HomeProfile {
+  static const String profile = "Profile";
+  static const String notification = "Notification";
+  static const String language = "Language";
+  static const String changePass = "Change Password";
+  static const String privacy = "Privacy";
+  static const String termsCon = "Terms & Conditions";
+  static const String singOut = "Sign Out";
 }
 
 class SignInStrings {

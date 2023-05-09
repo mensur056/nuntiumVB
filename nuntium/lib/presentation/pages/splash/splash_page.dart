@@ -2,12 +2,12 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nuntium/bloc/sign_up/sign_up_cubit.dart';
+import 'package:nuntium/presentation/pages/home/home_profile.dart';
 import '../../../bloc/auth/auth_cubit.dart';
 import '../../../bloc/auth/auth_state.dart';
 import '../../../data/contractors/i_auth_repository.dart';
 import '../../../utility/constants/colors.dart';
 import '../../../utility/constants/icon_path.dart';
-import '../home/home_page.dart';
 import '../sign_up/sign_up_page.dart';
 
 class SplashPage extends StatelessWidget {
@@ -55,7 +55,7 @@ class SplashPage extends StatelessWidget {
               child: SignUpPage(),
             );
           } else {
-            return const HomePage();
+            return const HomeProfilePage();
             // return const WelcomePage();
             // return BlocProvider<OnboardingCubit>(
             //   create: (context) => OnboardingCubit(),

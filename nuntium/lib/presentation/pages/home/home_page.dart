@@ -82,7 +82,9 @@ class HomePage extends StatelessWidget {
                           padding: 12.onlyRightP,
                           child: Chip(
                               labelPadding: const EdgeInsets.all(8),
-                              backgroundColor: AppColors.primaryColors,
+                              backgroundColor: (tagValue?[index].isactive ?? false)
+                                  ? AppColors.primaryColors
+                                  : AppColors.chipPrimaryColor,
                               label: FittedBox(
                                 fit: BoxFit.fill,
                                 child: InkWell(
