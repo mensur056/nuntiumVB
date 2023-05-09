@@ -4,7 +4,6 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'user_model.g.dart';
 
-// ignore: must_be_immutable
 @JsonSerializable()
 class UserModel extends Equatable {
   String? email;

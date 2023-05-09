@@ -12,7 +12,6 @@ class HomeDataSource {
         return NewsModel.fromJson(snapshot.data()!);
       },
       toFirestore: (value, options) {
-        if (value == null) throw Exception();
         return value.toJson();
       },
     ).get();
@@ -30,7 +29,6 @@ class HomeDataSource {
         return TagModel.fromJson(snapshot.data()!);
       },
       toFirestore: (value, options) {
-        if (value == null) throw Exception();
         return value.toJson();
       },
     ).get();
@@ -48,7 +46,6 @@ class HomeDataSource {
         return CategoryModel.fromJson(snapshot.data()!);
       },
       toFirestore: (value, options) {
-        if (value == null) throw Exception();
         return value.toJson();
       },
     ).get();
