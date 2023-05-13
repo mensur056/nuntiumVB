@@ -15,6 +15,11 @@ class AppTheme {
         fontSize: 22,
         color: Colors.white,
       ),
+      displayLarge: GoogleFonts.nunito(
+        fontSize: 20,
+        color: AppColors.textColor,
+        fontWeight: FontWeight.w600,
+      ),
       bodySmall: GoogleFonts.nunito(
         fontSize: 22,
         color: Colors.black,
