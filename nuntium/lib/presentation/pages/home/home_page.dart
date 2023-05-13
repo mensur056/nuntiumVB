@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _body(),
-      bottomNavigationBar: _bottomNavigationBar(),
+      bottomNavigationBar: const CustomNavigationBar(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
@@ -30,17 +30,6 @@ class HomePage extends StatelessWidget {
         },
         child: const Icon(Icons.add),
       ),
-    );
-  }
-
-  BottomNavigationBar _bottomNavigationBar() {
-    return BottomNavigationBar(
-      items: [
-        BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.home.toPath())),
-        BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.apps.toPath())),
-        BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.bookmark.toPath())),
-        BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.profile.toPath())),
-      ],
     );
   }
 
@@ -199,6 +188,24 @@ class HomePage extends StatelessWidget {
           }
         },
       ),
+    );
+  }
+}
+
+class CustomNavigationBar extends StatelessWidget {
+  const CustomNavigationBar({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      items: [
+        BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.home.toPath())),
+        BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.apps.toPath())),
+        BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.bookmark.toPath())),
+        BottomNavigationBarItem(label: '', icon: Image.asset(HomeIcon.profile.toPath())),
+      ],
     );
   }
 }

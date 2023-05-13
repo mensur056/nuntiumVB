@@ -3,6 +3,7 @@ import 'package:grock/grock.dart';
 import 'package:nuntium/utility/constants/strings.dart';
 
 import '../../global/custom_text_title.dart';
+import 'home_page.dart';
 import 'widgets/profile_catergory.dart';
 import 'widgets/profile_image.dart';
 
@@ -17,6 +18,7 @@ class _HomeProfilePageState extends State<HomeProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const CustomNavigationBar(),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
@@ -27,35 +29,39 @@ class _HomeProfilePageState extends State<HomeProfilePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const CustomTextTitle(title: HomeProfile.profile),
-            const SizedBox(
-              height: 24,
-            ),
+            _sizedBoxH24(),
             const ProfileImageField(),
+            _sizedBoxH24(),
             ProfileCategory(
               onPressed: () {},
               title: HomeProfile.notification,
               trailing: const Icon(Icons.add),
             ),
+            _sizedBoxH8(),
             ProfileCategory(
               onPressed: () {},
               title: HomeProfile.language,
               trailing: const Icon(Icons.add),
             ),
+            _sizedBoxH8(),
             ProfileCategory(
               onPressed: () {},
               title: HomeProfile.changePass,
               trailing: const Icon(Icons.add),
             ),
+            _sizedBoxH8(),
             ProfileCategory(
               onPressed: () {},
               title: HomeProfile.privacy,
               trailing: const Icon(Icons.add),
             ),
+            _sizedBoxH8(),
             ProfileCategory(
               onPressed: () {},
               title: HomeProfile.termsCon,
               trailing: const Icon(Icons.add),
             ),
+            _sizedBoxH8(),
             ProfileCategory(
               onPressed: () {},
               title: HomeProfile.singOut,
@@ -64,6 +70,18 @@ class _HomeProfilePageState extends State<HomeProfilePage> {
           ],
         ),
       ),
+    );
+  }
+
+  SizedBox _sizedBoxH24() {
+    return const SizedBox(
+      height: 24,
+    );
+  }
+
+  SizedBox _sizedBoxH8() {
+    return const SizedBox(
+      height: 8,
     );
   }
 }

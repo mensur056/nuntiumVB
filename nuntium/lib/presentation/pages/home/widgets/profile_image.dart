@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:nuntium/utility/constants/colors.dart';
 
 class ProfileImageField extends StatelessWidget {
   const ProfileImageField({
@@ -29,7 +30,7 @@ class ProfileImageField extends StatelessWidget {
           Text(
             'mansur.sarxanov@gmail.com',
             style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                  color: Colors.black,
+                  color: AppColors.textColor,
                 ),
           ),
         ],
