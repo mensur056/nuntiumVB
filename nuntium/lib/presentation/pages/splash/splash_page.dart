@@ -1,14 +1,14 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nuntium/bloc/sign_up/sign_up_cubit.dart';
-import 'package:nuntium/presentation/pages/home/home_profile.dart';
 import '../../../bloc/auth/auth_cubit.dart';
 import '../../../bloc/auth/auth_state.dart';
+import '../../../bloc/sign_in/sign_in_cubit.dart';
 import '../../../data/contractors/i_auth_repository.dart';
 import '../../../utility/constants/colors.dart';
 import '../../../utility/constants/icon_path.dart';
-import '../sign_up/sign_up_page.dart';
+import '../home/home_page.dart';
+import '../sign_in/sign_in_page.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -50,12 +50,12 @@ class SplashPage extends StatelessWidget {
               ),
             );
           } else if (state == AuthState.unauthenticated) {
-            return BlocProvider<SignUpCubit>(
-              create: (context) => SignUpCubit(context.read<IAuthRepository>()),
-              child: SignUpPage(),
+            return BlocProvider<SignInCubit>(
+              create: (context) => SignInCubit(context.read<IAuthRepository>()),
+              child: SignInPage(),
             );
           } else {
-            return const HomeProfilePage();
+            return const HomePage();
             // return const WelcomePage();
             // return BlocProvider<OnboardingCubit>(
             //   create: (context) => OnboardingCubit(),

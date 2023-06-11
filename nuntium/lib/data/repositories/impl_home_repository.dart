@@ -6,7 +6,7 @@ import 'package:nuntium/data/model/responses/tag_model.dart';
 import 'package:nuntium/presentation/global/failure.dart';
 import 'package:nuntium/data/model/responses/news_model.dart';
 
-import '../../locator/locator.dart';
+import '../../locator/injection.dart';
 
 class ImplHomeRepository extends IHomeRepository {
   final _homeDataSource = getIt.get<HomeDataSource>();

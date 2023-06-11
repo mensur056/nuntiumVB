@@ -4,12 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
 import 'package:nuntium/bloc/sign_up/sign_up_cubit.dart';
 import 'package:nuntium/presentation/pages/sign_up/sign_up_page.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../bloc/sign_in/sign_in_cubit.dart';
 import '../../../bloc/sign_in/sign_in_state.dart';
 import '../../../data/contractors/i_auth_repository.dart';
 import '../../../utility/constants/icon_path.dart';
-import '../../../utility/constants/strings.dart';
 import '../../dialogs/failure_dialogs.dart';
 import '../../global/custom_button.dart';
 import '../../global/custom_navigation_text_bar.dart';
@@ -24,21 +23,26 @@ class SignInPage extends StatelessWidget {
   final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
+
     return Scaffold(
-      body: _body(),
+      body: _body(context),
       bottomNavigationBar: CustomNavigationTextBar(
-          buttonText: SignInStrings.signUp, text: SignInStrings.haveAccount, onPressed: () {
+          buttonText: localization.signUp,
+          text: localization.haveAccount,
+          onPressed: () {
             context.navigateToPage(BlocProvider(
               create: (context) => SignUpCubit(
                 context.read<IAuthRepository>(),
               ),
               child: SignUpPage(),
             ));
-      }),
+          }),
     );
   }
 
-  BlocConsumer<SignInCubit, SignInState> _body() {
+  BlocConsumer<SignInCubit, SignInState> _body(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     return BlocConsumer<SignInCubit, SignInState>(
       buildWhen: (_, current) => current is! SignInSuccess,
       listenWhen: (_, current) => current is SignInFailure || current is SignInSuccess,
@@ -67,17 +71,17 @@ class SignInPage extends StatelessWidget {
                   const SizedBox(
                     height: 30,
                   ),
-                  const CustomTextTitle(title: SignInStrings.welcome),
+                  CustomTextTitle(title: localization.welcome),
                   const SizedBox(
                     height: 20,
                   ),
-                  const CustomTextDescription(
-                      textAlign: TextAlign.start, title: SignInStrings.description),
+                  CustomTextDescription(
+                      textAlign: TextAlign.start, title: localization.description),
                   const SizedBox(
                     height: 30,
                   ),
                   CustomTextField(
-                      title: SignInStrings.hintTextEmail,
+                      title: localization.hintTextEmail,
                       iconPath: SignInIcon.email.toPath(),
                       controller: emailController),
                   const SizedBox(
@@ -89,7 +93,7 @@ class SignInPage extends StatelessWidget {
                       icon: const Icon(Icons.visibility_outlined),
                     ),
                     iconPath: SignInIcon.locked.toPath(),
-                    title: SignInStrings.hintTextPassword,
+                    title: localization.hintTextPassword,
                     controller: passwordController,
                   ),
                   const SizedBox(
@@ -100,7 +104,7 @@ class SignInPage extends StatelessWidget {
                     child: TextButton(
                       onPressed: () {},
                       child: Text(
-                        SignInStrings.forgotPassword,
+                        localization.forgotPassword,
                         style: GoogleFonts.nunito(
                             color: Colors.grey, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
@@ -110,7 +114,7 @@ class SignInPage extends StatelessWidget {
                     height: 20,
                   ),
                   CustomButton(
-                    title: SignInStrings.buttonText,
+                    title: localization.buttonText,
                     onTap: () {
                       context
                           .read<SignInCubit>()
@@ -123,14 +127,14 @@ class SignInPage extends StatelessWidget {
                   SocialMediaSignInButton(
                       onTap: () {},
                       iconPath: SignInIcon.google.toPath(),
-                      title: SignInStrings.googleSignIn),
+                      title: localization.googleSignIn),
                   const SizedBox(
                     height: 20,
                   ),
                   SocialMediaSignInButton(
                       onTap: () {},
                       iconPath: SignInIcon.facebook.toPath(),
-                      title: SignInStrings.facebookSignIn),
+                      title: localization.facebookSignIn),
                 ],
               ),
             ),

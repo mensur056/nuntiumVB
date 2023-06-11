@@ -5,12 +5,12 @@ import 'package:nuntium/data/contractors/i_home_repository.dart';
 import 'package:nuntium/presentation/pages/home/home_page.dart';
 import 'package:nuntium/presentation/pages/splash/splash_page.dart';
 import 'package:nuntium/utility/constants/theme.dart';
-
 import 'bloc/auth/auth_cubit.dart';
 import 'bloc/home/home_cubit.dart';
 import 'bloc/home/detail/home_detail_cubit.dart';
 import 'data/repositories/impl_auth_repository.dart';
 import 'data/repositories/impl_home_repository.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -34,6 +34,9 @@ class MyApp extends StatelessWidget {
             ),
           ],
           child: MaterialApp(
+            locale: const Locale('en'),
+            supportedLocales: AppLocalizations.supportedLocales,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
             theme: AppTheme().ligthTheme,
             debugShowCheckedModeBanner: false,
             title: 'Material App',

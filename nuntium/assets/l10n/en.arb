@@ -1,0 +1,14 @@
+{
+    "@@locale":"en",
+    "haveAccount":"Don't have an account?",
+    "welcome":"Welcome Back 👋",
+    "description":"I am happy to see you again. You can continue where you left off by logging in",
+    "hintTextEmail":"Email Adress",
+    "hintTextPassword":"Password",
+    "forgotPassword":"Forgot Password?",
+    "signUp":"Sign Up",
+    "buttonText":"Sign In",
+    "googleSignIn":"Sign In With Google",
+    "facebookSignIn":"Sign In With Facebook"
+
+}

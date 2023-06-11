@@ -1,0 +1,13 @@
+{
+    "@@locale":"tr",
+    "haveAccount":"Hesabin yokmu?",
+    "welcome":"Hoşgeldin👋",
+    "description":"Yeniden seni gördüğüme sevindim. You can continue where you left off by logging in",
+    "hintTextEmail":"Emailinizi girin",
+    "hintTextPassword":"Parolanizi girin",
+    "forgotPassword":"Şifreni unutdunmu?",
+    "signUp":"Kayd ol",
+    "buttonText":"Giriş yap",
+    "googleSignIn":"Google ile giriş yap",
+    "facebookSignIn":"Facebook ile giriş yap"
+}
