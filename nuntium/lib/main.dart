@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'app.dart';
 import 'firebase_options.dart';
-import 'locator/injection.dart';
+import 'DI/injection.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

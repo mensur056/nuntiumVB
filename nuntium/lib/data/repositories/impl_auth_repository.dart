@@ -5,7 +5,7 @@ import 'package:nuntium/data/model/responses/sign_up_response.dart';
 import 'package:nuntium/presentation/global/failure.dart';
 import 'package:nuntium/data/model/responses/sign_in_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../locator/injection.dart';
+import '../../DI/injection.dart';
 
 class ImplAuthRepository implements IAuthRepository {
   final _authDataSource = getIt.get<AuthDataSource>();
